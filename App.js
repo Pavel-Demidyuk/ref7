@@ -2,8 +2,29 @@ import React from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {AppLoading, Asset, Font, Icon} from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import StartNavigator from './navigation/StartNavigator';
+import * as firebase from "firebase";
 
 export default class App extends React.Component {
+
+    constructor(props) {
+        super(props)
+
+        var config = {
+            apiKey: "AIzaSyDxqDaTcAUR3R6fZwI7PSz5H1yGhVnHHH4",
+            authDomain: "location-72fca.firebaseapp.com",
+            databaseURL: "https://location-72fca.firebaseio.com",
+            projectId: "location-72fca",
+            storageBucket: "location-72fca.appspot.com",
+            messagingSenderId: "440309375391"
+        };
+
+        firebase.initializeApp(config);
+
+        global.firebase = firebase
+    }
+
+
     state = {
         isLoadingComplete: false,
     };
@@ -17,13 +38,25 @@ export default class App extends React.Component {
                     onFinish={this._handleFinishLoading}
                 />
             );
+
+
         } else {
-            return (
-                <View style={styles.container}>
-                    {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
-                    <AppNavigator/>
-                </View>
-            );
+
+            if (this.state.ready) {
+                return (
+                    <View style={styles.container}>
+                        {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
+                        <AppNavigator/>
+                    </View>
+                );
+            } else {
+                return (
+                    <View style={styles.container}>
+                        {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
+                        <StartNavigator/>
+                    </View>
+                )
+            }
         }
     }
 

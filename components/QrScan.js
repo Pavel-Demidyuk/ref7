@@ -3,7 +3,7 @@ import {Button, Dimensions, LayoutAnimation, StyleSheet, Text, TextInput, View,}
 import * as firebase from 'firebase'
 import {BarCodeScanner, Permissions} from 'expo';
 
-export default class Referee extends Component {
+class QrScan extends Component {
     constructor(props) {
         super(props)
         this._requestCameraPermission()
@@ -148,4 +148,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-export {Referee}
+
+
+export {QrScan}

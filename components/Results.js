@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 });
 
 const data = {
-    labels: ['1 Referee', '2 Referee', '3 Referee'],
+    labels: ['1 QrScanScreen', '2 QrScanScreen', '3 QrScanScreen'],
     datasets: [{
         data: [time1, time2, time3]
     }]
