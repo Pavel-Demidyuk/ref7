@@ -8,6 +8,6 @@ export default class QrScreen extends React.Component {
 
     render() {
 
-        return (<QrScan></QrScan>)
+        return (<QrScan/>)
     }
 }
