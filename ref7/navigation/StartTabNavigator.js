@@ -5,25 +5,8 @@ import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 import TabBarIcon from '../components/TabBarIcon';
 import QrScanScreen from '../screens/QrScanScreen';
 import QrDisplayScreen from '../screens/QrDisplayScreen';
-import TimerScreen from '../screens/TimerScreen'
 
-const TimerStack = createStackNavigator({
-  Timer: TimerScreen,
-});
 
-TimerStack.navigationOptions = {
-  tabBarLabel: 'timer',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
 const QrScanStack = createStackNavigator({
     Qr: QrScanScreen,
 });
@@ -60,10 +43,7 @@ QrDisplayStack.navigationOptions = {
     ),
 };
 
-
-
 export default createBottomTabNavigator({
     QrScanStack,
     QrDisplayStack,
-    TimerStack,
 });
