@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button, Dimensions, LayoutAnimation, StyleSheet, Text, TextInput, View,} from 'react-native';
 import * as firebase from 'firebase'
 import {BarCodeScanner, Permissions} from 'expo';
+import {Timer} from '../components/Timer';
 
 class QrScan extends Component {
     constructor(props) {
@@ -75,7 +76,7 @@ class QrScan extends Component {
         this.setState({
             hasCameraPermission: status === 'granted',
         });
-        alert("You should scan QR")
+      //  alert("You should scan QR")
     };
 
     _handleBarCodeRead = result => {
@@ -95,21 +96,7 @@ class QrScan extends Component {
     render() {
         if (this.state.Scanned_QR) {
             return (
-                <View style={{padding: 10}}>
-                    <TextInput
-                        style={{height: 40}}
-                        placeholder="Write something"
-                        onChangeText={(text) => this.setState({text})}
-                    />
-                    <Button
-                        onPress={() => {
-                            this.send()
-                        }}
-                        title="send to firebase"
-                        color="#841584"
-                        accessibilityLabel="Learn more about this purple button"
-                    />
-                </View>
+              <Timer/>
             )
 
         } else {

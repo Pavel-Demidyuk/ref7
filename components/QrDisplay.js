@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button, StyleSheet, Text, View,} from 'react-native';
 import QRCode from 'react-native-qrcode';
+import {Timer} from '../components/Timer';
 
 class QrDisplay extends Component {
     state = {
@@ -141,26 +142,24 @@ class QrDisplay extends Component {
                             size={300}
                             bgColor='black'
                             fgColor='white'/>
-                        {/*<Button*/}
-                            {/*onPress={this.press.bind(this)}*/}
-                            {/*title="I have already scan QR code"*/}
-                            {/*color="#841584"*/}
-                            {/*accessibilityLabel="Learn more about this purple button"*/}
-                        {/*/>*/}
+
 
                         <Text> List of attenders: </Text>
+                        <Text> {this.state.referee_1}</Text>
+                        <Text> {this.state.referee_2}</Text>
+                        <Text> {this.state.referee_3}</Text>
+                        <Button
+                          onPress={this.press.bind(this)}
+                            title="Start"
+                            color="#841584"
+                            accessibilityLabel="Learn more about this purple button"
+                        />
                     </View>
 
                 )
             } else {
                 return (
-                    <View style={styles.container}>
-                        <Text>referee 1: {this.state.info_referee_1}|||
-                            referee 2: {this.state.info_referee_2}|||
-                            referee 3: {this.state.info_referee_3}
-
-                        </Text>
-                    </View>
+                    <Timer/>
                 )
             }
         } else {
