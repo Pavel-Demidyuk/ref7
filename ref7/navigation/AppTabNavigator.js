@@ -6,7 +6,6 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import TimerScreen from '../screens/TimerScreen'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -58,5 +57,4 @@ export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
-
 });
