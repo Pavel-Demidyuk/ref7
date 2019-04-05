@@ -159,7 +159,7 @@ class QrDisplay extends Component {
                 )
             } else {
                 return (
-                    <Timer/>
+                    <Timer/> 
                 )
             }
         } else {
