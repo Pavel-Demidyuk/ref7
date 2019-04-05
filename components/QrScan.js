@@ -96,7 +96,7 @@ class QrScan extends Component {
     render() {
         if (this.state.Scanned_QR) {
             return (
-              <Timer/>
+              <Timer/> 
             )
 
         } else {
