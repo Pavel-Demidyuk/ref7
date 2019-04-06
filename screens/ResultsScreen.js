@@ -29,7 +29,7 @@ export default class Results extends React.Component {
                         <BarChart
                             data={data}
                             width={270}
-                            height={192}
+                            height={188}
                             chartConfig = {{
                                 backgroundGradientFrom: '#fff',
                                 backgroundGradientTo: '#fff',
