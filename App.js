@@ -22,6 +22,9 @@ export default class App extends React.Component {
         firebase.initializeApp(config);
 
         global.firebase = firebase
+        global.setAppReady = () => {
+            this.setState({ready: true})
+        }
     }
 
 

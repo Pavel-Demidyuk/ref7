@@ -110,6 +110,8 @@ class QrDisplay extends Component {
             this.press()
         }, 1000)
 
+        setAppReady();
+
     }
 
     render() {
@@ -149,7 +151,10 @@ class QrDisplay extends Component {
                         <Text> {this.state.referee_2}</Text>
                         <Text> {this.state.referee_3}</Text>
                         <Button
-                          onPress={this.press.bind(this)}
+                            onPress={
+                                () => {
+                                    this.press()
+                                }}
                             title="Start"
                             color="#841584"
                             accessibilityLabel="Learn more about this purple button"
@@ -159,7 +164,7 @@ class QrDisplay extends Component {
                 )
             } else {
                 return (
-                    <Timer/> 
+                    <Timer/>
                 )
             }
         } else {
