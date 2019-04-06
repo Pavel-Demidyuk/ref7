@@ -51,7 +51,7 @@ export default class Master extends Component {
     get_results() {
 
         firebase.database().ref('users/' + this.state.key).once('value', (snapshot) => {
-            //  alert("get get_results")
+            //  alert("get getResults")
             if (snapshot && snapshot.val()) {
                 //snaphost.val().all_slaves[slave_1]
                 const referee_1 = snapshot.val().all_referees.referee_1;
