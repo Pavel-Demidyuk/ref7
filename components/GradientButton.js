@@ -15,11 +15,13 @@ export default class GradientButton extends React.Component {
 
     onPressActionButton() {
         if (this.state.textRender === 'START') {
+          start_stop(true)
             this.setState({
                 textRender: "STOP",
                 gradientColors: ['#B53471', '#c0392b'],
             })
         } else {
+          start_stop(false)
             this.setState({
                 textRender: "START",
                 gradientColors: ['#2ecc71', '#1abc9c'],

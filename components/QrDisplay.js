@@ -42,7 +42,7 @@ class QrDisplay extends Component {
             // надо переходить на таймер -> setAppReady()
 
             this.getResults()
-        }, 4000)
+        }, 2000)
     }
 
     render() {
