@@ -12,7 +12,7 @@ export default class TimerScreen extends React.Component {
       millis:"00",
       minutes:"0",
       seconds:"00",
-      start_millis:null,
+      start_time:null,
 
     }
     global.start_stop = (param) => {
@@ -24,27 +24,27 @@ export default class TimerScreen extends React.Component {
   }
   set_time(){
     var d = new Date();
-    var mil = d.getMilliseconds ()
-    var sec = d.getSeconds ()
-    var min = d.getMinutes()
-    var h = d.getHours ()
-    var all_millis = mil + sec * 1000 +min *60000+ h*3600*1000
+    //var mil = d.getMilliseconds ()
+    //var sec = d.getSeconds ()
+    //var min = d.getMinutes()
+    //var h = d.getHours ()
+  //  var all_millis = mil + sec * 1000 +min *60000+ h*3600*1000
     this.setState({
-      start_millis: all_millis
+      start_time: d
     })
     this.counter()
   }
   counter(){
     var d = new Date();
-    var mil = d.getMilliseconds ()
-    var sec = d.getSeconds ()
-    var min = d.getMinutes()
-    var h = d.getHours ()
-    var all_millis_end = mil + sec * 1000 +min *60000+ h*3600*1000
-    var millis2 = all_millis_end - this.state.start_millis
-    var minutes = Math.floor(millis2 / 1000/60)
-    var seconds = Math.floor((millis2 - minutes*60*1000) / 1000)
-    var millis =  Math.floor((millis2- minutes*60*1000- seconds*1000)/10)
+  //  var mil = d.getMilliseconds ()
+  //  var sec = d.getSeconds ()
+  //  var min = d.getMinutes()
+//    var h = d.getHours ()
+  //  var all_millis_end = mil + sec * 1000 +min *60000+ h*3600*1000
+    var middle_millis = d - this.state.start_time
+    var minutes = Math.floor(middle_millis / 1000/60)
+    var seconds = Math.floor((middle_millis - minutes*60*1000) / 1000)
+    var millis =  Math.floor((middle_millis- minutes*60*1000- seconds*1000)/10)
       this.setState({
         millis:millis<10 ? "0"+ millis : millis,
         minutes:minutes,
@@ -74,7 +74,7 @@ export default class TimerScreen extends React.Component {
         <View style={{flex: 3, backgroundColor: "#fff", alignItems: 'center'}}>
         <View style={styles.secondFloor}>
         <View style={styles.timerCircle}>
-        <Text style={{fontSize: 45, color: "#fff"}}>{this.state.minutes}:{this.state.seconds}:{this.state.millis}</Text>
+        <Text style={{fontSize: 45, color: "#fff",fontFamily: 'monospace'}}>{this.state.minutes}:{this.state.seconds}:{this.state.millis}</Text>
         </View>
         <View style={{marginTop: 30}}>
         <View style={{flexDirection: 'row'}}>
