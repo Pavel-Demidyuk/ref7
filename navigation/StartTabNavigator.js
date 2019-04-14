@@ -1,5 +1,6 @@
 import React from 'react';
-import {Platform} from 'react-native';
+import { Platform } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
@@ -37,7 +38,7 @@ QrDisplayStack.navigationOptions = {
             name={
                 Platform.OS === 'ios'
                     ? 'ios-barcode'
-                    : 'md-qr-scanner'
+                    : 'md-barcode'
             }
         />
     ),

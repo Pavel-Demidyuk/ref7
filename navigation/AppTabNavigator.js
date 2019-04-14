@@ -7,6 +7,7 @@ import TimerScreen from '../screens/TimerScreen'
 import ResultsScreen from "../screens/ResultsScreen";
 
 
+
 const TimerStack = createStackNavigator({
     Timer: TimerScreen,
 });
@@ -16,7 +17,7 @@ TimerStack.navigationOptions = {
     tabBarIcon: ({focused}) => (
         <TabBarIcon
             focused={focused}
-            name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+            name={Platform.OS === 'ios' ? 'ios-timer' : 'md-timer'}
         />
     ),
 };
@@ -31,7 +32,7 @@ ResultsStack.navigationOptions = {
     tabBarIcon: ({focused}) => (
         <TabBarIcon
             focused={focused}
-            name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+            name={Platform.OS === 'ios' ? 'ios-list' : 'md-list'}
         />
     ),
 };

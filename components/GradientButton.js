@@ -20,12 +20,14 @@ export default class GradientButton extends React.Component {
                 textRender: "STOP",
                 gradientColors: ['#B53471', '#c0392b'],
             })
+            this.props.updateData('STOP')
         } else {
           start_stop(false)
             this.setState({
                 textRender: "START",
                 gradientColors: ['#2ecc71', '#1abc9c'],
             })
+            this.props.updateData('START')
         }
     }
 
