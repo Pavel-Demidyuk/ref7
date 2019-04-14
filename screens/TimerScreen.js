@@ -12,7 +12,7 @@ export default class TimerScreen extends React.Component {
     this.state = {
       start: false,
       millis: "00",
-      minutes: "0",
+      minutes: "00",
       seconds: "00",
       start_millis: null,
       fontLoaded: false,
