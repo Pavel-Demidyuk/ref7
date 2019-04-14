@@ -16,7 +16,7 @@ export default class TimerScreen extends React.Component {
       seconds: "00",
       start_millis: null,
       fontLoaded: false,
-      buttonTextRender: '',
+      buttonTextRender: 'START',
 
     }
 
@@ -114,7 +114,7 @@ export default class TimerScreen extends React.Component {
                                 </View>
                             </View>
                         </View>
-                        <View style={{marginTop: 25, height: 75, backgroundColor: "#F0F0F0", alignItems: 'center', justifyContent: 'center'}}>
+                        <View style={{marginTop: 10, height: 75, backgroundColor: "#F0F0F0", alignItems: 'center', justifyContent: 'center'}}>
                             <GradientButton updateData={this.updateData}/>
                         </View>
                     </View>
@@ -137,7 +137,7 @@ export default class TimerScreen extends React.Component {
                                 </View>
                             </View>
                         </View>
-                        <View style={{marginTop: 25, height: 75, justifyContent: 'center', alignItems: 'center'}}>
+                        <View style={{marginTop: 10, height: 75, justifyContent: 'center', alignItems: 'center'}}>
                             <GradientButton updateData={this.updateData}/>
                         </View>
                     </View>
