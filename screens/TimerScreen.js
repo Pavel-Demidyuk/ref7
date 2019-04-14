@@ -41,7 +41,7 @@ export default class TimerScreen extends React.Component {
     var all_millis = mil + sec * 1000 + min * 60000 + h * 3600 * 1000
 
     this.setState({
-      start_time: d
+      start_time: all_millis
     })
 
     this.counter()
@@ -59,11 +59,11 @@ export default class TimerScreen extends React.Component {
     var minutes = Math.floor(millis2 / 1000 / 60)
     var seconds = Math.floor((millis2 - minutes * 60 * 1000) / 1000)
     var millis =  Math.floor((millis2 - minutes * 60 * 1000 - seconds * 1000) / 10)
-
+    alert(millis2)
       this.setState({
 
         millis: millis < 10 ? "0" + millis : millis,
-        minutes: minutes,
+        minutes: minutes < 10 ? "0" + minutes : minutes,,
         seconds: seconds < 10 ? "0" + seconds : seconds,
 
       })
