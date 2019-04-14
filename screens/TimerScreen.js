@@ -63,7 +63,7 @@ export default class TimerScreen extends React.Component {
       this.setState({
 
         millis: millis < 10 ? "0" + millis : millis,
-        minutes: minutes < 10 ? "0" + minutes : minutes,,
+        minutes: minutes < 10 ? "0" + minutes : minutes,
         seconds: seconds < 10 ? "0" + seconds : seconds,
 
       })
