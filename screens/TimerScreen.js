@@ -92,7 +92,7 @@ export default class TimerScreen extends React.Component {
         let counter = () => {
             this.setState({
                     started: true,
-                    diff: diff = new Date() - startDate
+                    diff: new Date() - startDate
                 }
             )
 
