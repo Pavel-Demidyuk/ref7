@@ -1,34 +1,39 @@
 import React from 'react';
-import { LinearGradient } from 'expo';
+import {LinearGradient} from 'expo';
 import Ripple from 'react-native-material-ripple';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-export default class GradientButton extends React.Component {
-    constructor(props) {
-        super(props)
+const
+    START_TEXT = 'START',
+    STOP_TEXT = 'STOP';
 
-        this.state = {
-            textRender: 'START',
-            gradientColors: ['#2ecc71', '#1abc9c'],
-        }
+export default class StartButton extends React.Component {
+
+    state = {
+        started: false,
+        text: START_TEXT,
+        gradientColors: ['#2ecc71', '#1abc9c'],
     }
 
     onPressActionButton() {
-        if (this.state.textRender === 'START') {
-          start_stop(true)
+
+        this.props.action(this.state.started ? false : true)
+
+        if (this.state.started) {
             this.setState({
-                textRender: "STOP",
+                started: false,
+                text: START_TEXT,
                 gradientColors: ['#B53471', '#c0392b'],
             })
-            this.props.updateData('STOP')
         } else {
-          start_stop(false)
             this.setState({
-                textRender: "START",
+                started: true,
                 gradientColors: ['#2ecc71', '#1abc9c'],
+                text: STOP_TEXT
             })
-            this.props.updateData('START')
         }
+
+
     }
 
     render() {
@@ -52,7 +57,7 @@ export default class GradientButton extends React.Component {
                             colors={this.state.gradientColors}
                         >
                             <Text
-                                style={{fontSize: 16, fontWeight: '600', color: '#fff'}}>{this.state.textRender}</Text>
+                                style={{fontSize: 16, fontWeight: '600', color: '#fff'}}>{this.state.text}</Text>
                         </LinearGradient>
                     </TouchableOpacity>
                 </Ripple>
