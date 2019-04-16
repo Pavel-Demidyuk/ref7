@@ -1,74 +1,64 @@
-import React, {Component} from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Font } from 'expo';
+import { View, Text, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { Bars } from 'react-native-loader';
+import GradientButton from '../components/GradientButton';
 
-const INTERVAL = 1000;
+export default class Timer extends React.Component {
+  constructor(props) {
+    super(props)
 
-
-export default class App extends Component {
-    render() {
-        return (
-            <View style={styles.forall}>
-                <Timer starttime={new Date().getTime()}/>
-            </View>
-        );
+    this.state = {
+      start: false,
+      millis: "00",
+      minutes: "00",
+      seconds: "00",
     }
+    console.log(this.state.seconds)
 }
+componentDidMount(){
+  this.counter_()
+}
+  counter_() {
+    //console.log(this.props.mil)
+    var millis2 = this.props.mil
+    //console.log(23)
+    var minutes = Math.floor(millis2 / 1000 / 60)
+    var seconds = Math.floor((millis2 - minutes * 60 * 1000) / 1000)
+    var millis =  Math.floor((millis2 - minutes * 60 * 1000 - seconds * 1000) / 10)
 
+      this.setState({
+        millis: millis < 10 ? "0" + millis : millis,
+        minutes: minutes < 10 ? "0" + minutes : minutes,
+        seconds: seconds < 10 ? "0" + seconds : seconds,
 
-class Timer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {timenow: new Date().getTime()}
-        this.componentWillUnmount = this.componentWillUnmount.bind(this);
-        this.componentDidMount = this.componentDidMount.bind(this);
+      })
+
+      clearInterval(this.interval);
+
+      this.interval = setInterval(() => {
+
+          this.counter_()
+
+      }, 1)
+
     }
 
-    increment() {
-        this.setState({timenow: new Date().getTime()});
-    }
-
-    componentDidMount() {
-        this.timerID = setInterval(() => this.increment(), 1000 / INTERVAL);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerID);
-    }
 
     render() {
-        let distance = this.state.timenow - this.props.starttime;
-        return (
-            <View>
-                <View style={styles.box}>
-                    <Text style={styles.foreach}>Timer:</Text>
-                    <Text style={styles.foreach}>{Math.floor(distance / INTERVAL / 60 / 60 % 60)} : </Text>
-                    <Text style={styles.foreach}>{Math.floor(distance / INTERVAL / 60 % 60)} : </Text>
-                    <Text style={styles.foreach}>{Math.floor(distance / INTERVAL % 60)} : </Text>
-                    <Text style={styles.foreach}>{Math.floor((distance / 10) % 100)}</Text>
-                </View>
-                <Button onPress={this.componentWillUnmount} title="stop"/>
-                <Button onPress={this.componentDidMount} title="start"/>
-            </View>
-        );
-    }
-}
+
+                return (
+                  <Text style={{fontFamily: 'roboto-mono', fontSize: 42, color: "#000"}}>{this.state.minutes}:{this.state.seconds}:{this.state.millis}</Text>
+            );
+        }
+     }
 
 
-const styles = StyleSheet.create({
-    forall: {
-        backgroundColor: '#F08080',
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-    },
-    box: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        marginTop: 30,
-    },
-    foreach: {
-        flex: 1,
-        fontSize: 20,
-    },
-});
+     const styles = StyleSheet.create({
+       container: {
+         backgroundColor: '#F0F0F0',
+         flex: 1
+       }
+     });
 export {Timer}

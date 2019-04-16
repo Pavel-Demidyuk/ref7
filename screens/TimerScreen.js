@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Bars } from 'react-native-loader';
 import GradientButton from '../components/GradientButton';
+import Timer from '../components/Timer'
 
 export default class TimerScreen extends React.Component {
   constructor(props) {
@@ -11,9 +12,7 @@ export default class TimerScreen extends React.Component {
 
     this.state = {
       start: false,
-      millis: "00",
-      minutes: "00",
-      seconds: "00",
+      middle:null,
       start_millis: null,
       fontLoaded: false,
       buttonTextRender: 'START',
@@ -23,7 +22,7 @@ export default class TimerScreen extends React.Component {
     global.start_stop = (param) => {
 
       this.setState({start: param})
-
+      console.log("Я вызвался")
       if (param) {
         this.set_time()
       }
@@ -38,6 +37,7 @@ export default class TimerScreen extends React.Component {
     var sec = d.getSeconds ()
     var min = d.getMinutes()
     var h = d.getHours ()
+    // console.log("Start: "+h+":"+min+":"+sec+":"+mil)
     var all_millis = mil + sec * 1000 + min * 60000 + h * 3600 * 1000
 
     this.setState({
@@ -54,17 +54,14 @@ export default class TimerScreen extends React.Component {
     var sec = d.getSeconds ()
     var min = d.getMinutes()
     var h = d.getHours ()
+    //console.log(" "+h+":"+min+":"+sec+":"+mil)
     var all_millis_end = mil + sec * 1000 + min * 60000 + h * 3600 * 1000
     var millis2 = all_millis_end - this.state.start_millis
-    var minutes = Math.floor(millis2 / 1000 / 60)
-    var seconds = Math.floor((millis2 - minutes * 60 * 1000) / 1000)
-    var millis =  Math.floor((millis2 - minutes * 60 * 1000 - seconds * 1000) / 10)
-    alert(millis2)
+    //console.log("counter    ")
       this.setState({
 
-        millis: millis < 10 ? "0" + millis : millis,
-        minutes: minutes < 10 ? "0" + minutes : minutes,
-        seconds: seconds < 10 ? "0" + seconds : seconds,
+        middle:millis2
+
 
       })
 
@@ -91,7 +88,7 @@ export default class TimerScreen extends React.Component {
     updateData = (value) => {
 
       this.setState({ buttonTextRender: value })
-      console.log(this.state.buttonTextRender)
+      //console.log(this.state.buttonTextRender)
     }
 
     render() {
@@ -101,7 +98,7 @@ export default class TimerScreen extends React.Component {
                     <View style={{flex: 1, backgroundColor: "#F0F0F0", alignItems: 'center'}}>
                         <View style={styles.secondFloor}>
                             <View style={styles.timerCircleGreen}>
-                                <Text style={{fontFamily: 'roboto-mono', fontSize: 42, color: "#000"}}>{this.state.minutes}:{this.state.seconds}:{this.state.millis}</Text>
+                                <Timer mil = {this.state.middle}/>
                             </View>
                             <View style={{marginTop: 50}}>
                                 <View style={{flexDirection: 'row'}}>
@@ -124,7 +121,7 @@ export default class TimerScreen extends React.Component {
                     <View style={{flex: 1, backgroundColor: "#F0F0F0", alignItems: 'center'}}>
                         <View style={styles.secondFloor}>
                             <View style={styles.timerCircleRed}>
-                                <Text style={{fontFamily: 'roboto-mono', fontSize: 42, color: "#000"}}>{this.state.minutes}:{this.state.seconds}:{this.state.millis}</Text>
+                                <Timer mil={this.state.middle}/>
                             </View>
                             <View style={{marginTop: 50}}>
                                 <View style={{flexDirection: 'row'}}>
