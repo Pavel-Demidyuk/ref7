@@ -1,7 +1,7 @@
 import React from 'react';
-import {LinearGradient} from 'expo';
+import { LinearGradient } from 'expo';
 import Ripple from 'react-native-material-ripple';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const
     START_TEXT = 'START',

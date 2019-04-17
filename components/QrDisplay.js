@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import QRCode from 'react-native-qrcode';
+import * as firebase from 'firebase'
+import BlockButton from './BlockButton'
 
 let randomString = require('random-string');
 
-class QrDisplay extends Component {
+class QrDisplay extends React.Component {
     state = {
         sideReferees: [],
         pin: randomString({
@@ -46,15 +48,28 @@ class QrDisplay extends Component {
     }
 
     render() {
-        return (<View style={styles.container}>
-            <QRCode value={this.state.pin} size={300} bgColor='black' fgColor='white'/>
-            <Text>Pin code: {this.state.pin}</Text>
-            <Text> List of attenders: </Text>
-            <Text> Referee 1: {this.state.sideReferees[0] ? 'connected' : 'connecting...'}</Text>
-            <Text> Referee 2: {this.state.sideReferees[1] ? 'connected' : 'connecting...'}</Text>
-            <Button onPress={setAppReady} title="Start" color="#841584"/>
-        </View>)
-
+        return (
+            <View style={styles.container}>
+                <View style={styles.qrCard}>
+                    <View style={styles.circle}>
+                        <QRCode value={this.state.pin} size={180} bgColor='black' fgColor='white'/>
+                    </View>
+                    <View style={{marginTop: 50}}>
+                        <View style={{flexDirection: 'row'}}>
+                            <Text style={{color: "#000", fontSize: 19}}>Referee 1</Text>
+                            <Text style={{color: "#666666", fontSize: 17, marginLeft: 50}}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
+                        </View>
+                        <View style={{flexDirection: 'row', marginTop: 10}}>
+                            <Text style={{color: "#000", fontSize: 19}}>Referee 2</Text>
+                            <Text style={{color: "#666666", fontSize: 17, marginLeft: 50}}>{this.state.sideReferees[0] ? 'Connected' : 'Connecting...'}</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={{marginTop: 20, height: 75, justifyContent: 'center', alignItems: 'center'}}>
+                    <BlockButton onPress={setAppReady}/>
+                </View>
+            </View>
+        )
     }
 }
 
@@ -63,8 +78,35 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
+    },
+
+    qrCard: {
+        marginTop: 30,
+        width: 270,
+        height: 400,
+        shadowColor: "#000",
+        shadowOffset: {width: 0, height: 4},
+        shadowOpacity: 0.37,
+        shadowRadius: 6.49,
+        elevation: 8,
+        borderRadius: 15,
+        borderColor: "#E8E8E8",
+        backgroundColor: "#000",
+        alignItems: 'center',
+    },
+
+    circle: {
+        marginTop: 20,
+        width: 230,
+        height: 230,
+        borderRadius: 115,
+        borderColor: "#2ECC71",
+        borderWidth: 2,
+        backgroundColor: "#fff",
         justifyContent: 'center',
+        textAlign: 'center',
+        alignItems: 'center',
     },
 });
 
-export {QrDisplay}
+export { QrDisplay }

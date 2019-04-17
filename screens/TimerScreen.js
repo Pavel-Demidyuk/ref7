@@ -1,8 +1,7 @@
 import React from 'react';
-import {Font} from 'expo';
-import {StyleSheet, Text, View} from 'react-native';
-import {Ionicons} from '@expo/vector-icons';
-import {Bars} from 'react-native-loader';
+import { Font } from 'expo';
+import Loader from '../components/Loader'
+import { StyleSheet, Text, View } from 'react-native';
 import StartButton from '../components/StartButton';
 
 export default class TimerScreen extends React.Component {
@@ -125,9 +124,7 @@ export default class TimerScreen extends React.Component {
                 // Это надо в отдельный компонент, я бы его назвал Spinner, Loader или Bars..
 
 
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
-                    <Bars size={20} color="#000"/>
-                </View>
+                <Loader />
             )
             return
         }
