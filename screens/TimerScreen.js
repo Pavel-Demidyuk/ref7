@@ -4,7 +4,7 @@ import Loader from '../components/Loader'
 import { StyleSheet, Text, View } from 'react-native';
 import StartButton from '../components/StartButton';
 import Timer from '../components/Timer.js'
-
+import { Bars } from 'react-native-loader';
 export default class TimerScreen extends React.Component {
 
    static navigationOptions = {

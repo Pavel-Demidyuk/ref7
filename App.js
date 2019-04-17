@@ -46,6 +46,7 @@ export default class App extends React.Component {
         } else {
 
             if (this.state.ready) {
+              console.log(true)
                 return (
                     <View style={styles.container}>
                         {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
@@ -53,6 +54,7 @@ export default class App extends React.Component {
                     </View>
                 );
             } else {
+              console.log(false)
                 return (
                     <View style={styles.container}>
                         {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
