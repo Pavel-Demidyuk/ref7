@@ -52,7 +52,7 @@ class QrDisplay extends React.Component {
             <View style={styles.container}>
                 <View style={styles.qrCard}>
                     <View style={styles.circle}>
-                        <QRCode value={this.state.pin} size={180} bgColor='black' fgColor='white'/>
+                        <QRCode value={this.state.pin} size={140} bgColor='black' fgColor='white'/>
                     </View>
                     <View style={{marginTop: 50}}>
                         <View style={{flexDirection: 'row'}}>
@@ -65,7 +65,7 @@ class QrDisplay extends React.Component {
                         </View>
                     </View>
                 </View>
-                <View style={{marginTop: 20, height: 75, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{marginTop: 35, height: 75, justifyContent: 'center', alignItems: 'center'}}>
                     <BlockButton onPress={setAppReady}/>
                 </View>
             </View>
@@ -76,6 +76,7 @@ class QrDisplay extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: 20,
         backgroundColor: '#fff',
         alignItems: 'center',
     },
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
         elevation: 8,
         borderRadius: 15,
         borderColor: "#E8E8E8",
-        backgroundColor: "#000",
+        backgroundColor: "#fff",
         alignItems: 'center',
     },
 
