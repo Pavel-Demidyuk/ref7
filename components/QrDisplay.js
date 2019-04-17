@@ -66,7 +66,7 @@ class QrDisplay extends React.Component {
                     </View>
                 </View>
                 <View style={{marginTop: 20, height: 75, justifyContent: 'center', alignItems: 'center'}}>
-                    <BlockButton onPress={()=>{setAppReady}}/>
+                    <BlockButton/>
                 </View>
             </View>
         )
