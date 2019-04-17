@@ -13,6 +13,8 @@ const TimerStack = createStackNavigator({
 });
 
 TimerStack.navigationOptions = {
+    header: null,
+    headerMode: 'none',
     tabBarLabel: 'Timer',
     tabBarIcon: ({focused}) => (
         <TabBarIcon
@@ -28,6 +30,8 @@ const ResultsStack = createStackNavigator({
 });
 
 ResultsStack.navigationOptions = {
+    header: null,
+    headerMode: 'none',
     tabBarLabel: 'Results',
     tabBarIcon: ({focused}) => (
         <TabBarIcon
