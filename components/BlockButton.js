@@ -12,7 +12,7 @@ export default class BlockButton extends React.Component {
     }
 
     onPressBlockButton() {
-       setAppReady()
+      setAppReady()
       if (this.state.fillColor == "#fff") {
         this.setState({
           fillColor: '#2DCB73',
