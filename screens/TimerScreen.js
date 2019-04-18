@@ -21,7 +21,7 @@ export default class TimerScreen extends React.Component {
    //     super(props)
    //
    //     this.state = {
-   //         start: false,
+   //         _start: false,
    //         millis: "00",
    //         minutes: "00",
    //         seconds: "00",
@@ -70,7 +70,7 @@ export default class TimerScreen extends React.Component {
    //
    //     clearInterval(this.interval);
    //     this.interval = setInterval(() => {
-   //         if (this.state.start) {
+   //         if (this.state._start) {
    //             this.counter()
    //         }
    //     }, 10)
@@ -101,7 +101,7 @@ export default class TimerScreen extends React.Component {
                if (this.state.started) {
                    counter()
                }
-           }, 100)
+           }, 995)
        }
 
        counter()
@@ -120,11 +120,6 @@ export default class TimerScreen extends React.Component {
    render() {
        if (!this.state.fontLoaded) {
            return (
-
-
-               // Это надо в отдельный компонент, я бы его назвал Spinner, Loader или Bars..
-
-
                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                    <Bars size={20} color="#000"/>
                </View>
@@ -134,7 +129,8 @@ export default class TimerScreen extends React.Component {
        if (this.state.started) {
            return (
                <View style={{marginTop:20}}>
-                    <Timer mil = {this.state.diff}/>
+                   <Text>{this.state.diff}</Text>
+                   <Timer mil = {this.state.diff}/>
                    <StartButton action={(flag) => {
                        this.action(flag)
                    }}/>
