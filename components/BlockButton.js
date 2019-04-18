@@ -12,16 +12,20 @@ export default class BlockButton extends React.Component {
     }
 
     onPressBlockButton() {
-       setAppReady()
+      setAppReady()
       if (this.state.fillColor == "#fff") {
         this.setState({
           fillColor: '#2DCB73',
+        })
+      } else {
+        this.setState({
+          fillColor: '#fff',
         })
       }
     }
 
     render() {
-        if (this.state.fillColor == "fff") {
+        if (this.state.fillColor == "#fff") {
             return (
               <View>
                 <TouchableOpacity style={styles.blockButtonOutline} onPress={() => this.onPressBlockButton()}>
