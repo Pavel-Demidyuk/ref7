@@ -88,12 +88,12 @@ export default class TimerScreen extends React.Component {
    }
 
    start() {
-
+           this.state.diff = 0;
 
        let counter = () => {
            this.setState({
                    started: true,
-                   diff: this.state.diff++
+                   diff: this.state.diff +  1
                }
            )
 
