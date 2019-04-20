@@ -6,6 +6,45 @@ import BlockButton from './BlockButton'
 
 let randomString = require('random-string');
 
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        marginTop: 20,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+    },
+
+    qrCard: {
+        marginTop: 30,
+        width: 270,
+        height: 400,
+        shadowColor: "#000",
+        shadowOffset: {width: 0, height: 4},
+        shadowOpacity: 0.37,
+        shadowRadius: 6.49,
+        elevation: 8,
+        borderRadius: 15,
+        borderColor: "#E8E8E8",
+        backgroundColor: "#fff",
+        alignItems: 'center',
+    },
+
+    circle: {
+        marginTop: 20,
+        width: 230,
+        height: 230,
+        borderRadius: 115,
+        borderColor: "#2ECC71",
+        borderWidth: 2,
+        backgroundColor: "#fff",
+        justifyContent: 'center',
+        textAlign: 'center',
+        alignItems: 'center',
+    },
+});
+
 class QrDisplay extends React.Component {
     state = {
         sideReferees: [],
@@ -72,42 +111,5 @@ class QrDisplay extends React.Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: 20,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-    },
-
-    qrCard: {
-        marginTop: 30,
-        width: 270,
-        height: 400,
-        shadowColor: "#000",
-        shadowOffset: {width: 0, height: 4},
-        shadowOpacity: 0.37,
-        shadowRadius: 6.49,
-        elevation: 8,
-        borderRadius: 15,
-        borderColor: "#E8E8E8",
-        backgroundColor: "#fff",
-        alignItems: 'center',
-    },
-
-    circle: {
-        marginTop: 20,
-        width: 230,
-        height: 230,
-        borderRadius: 115,
-        borderColor: "#2ECC71",
-        borderWidth: 2,
-        backgroundColor: "#fff",
-        justifyContent: 'center',
-        textAlign: 'center',
-        alignItems: 'center',
-    },
-});
 
 export { QrDisplay }
