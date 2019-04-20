@@ -101,7 +101,7 @@ export default class TimerScreen extends React.Component {
                if (this.state.started) {
                    counter()
                }
-           }, 995)
+           }, 10)
        }
 
        counter()
@@ -128,13 +128,7 @@ export default class TimerScreen extends React.Component {
        }
        if (this.state.started) {
            return (
-               <View style={{marginTop:20}}>
-                   <Text>{this.state.diff}</Text>
-                   <Timer mil = {this.state.diff}/>
-                   <StartButton action={(flag) => {
-                       this.action(flag)
-                   }}/>
-               </View>
+             <View style={{paddingTop:20}}><Text>{this.state.diff}</Text></View>
            );
        } else {
            return (

@@ -46,6 +46,7 @@ export default class Timer extends React.Component {
                 millis: millis
             })
 
+
             clearInterval(this.interval);
             this.interval = setInterval(() => {
                 counter()
