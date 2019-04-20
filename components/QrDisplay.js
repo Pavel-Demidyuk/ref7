@@ -20,6 +20,7 @@ class QrDisplay extends React.Component {
     componentWillMount() {
         firebase.database().ref('referees/' + this.state.pin + '/main').set(Expo.Constants.deviceId)
         this.getResults()
+        setAppReady()
     }
 
     getResults() {
