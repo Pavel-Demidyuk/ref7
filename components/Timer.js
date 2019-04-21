@@ -4,8 +4,8 @@ import {Ionicons} from '@expo/vector-icons';
 
 export default class Timer extends React.Component {
     render() {
-        let minutes = Math.floor(this.props.mil / 60000),
-            seconds = Math.floor((this.props.mil - minutes * 1000 * 60) / 1000)
+        let minutes = Math.floor(this.props.mil / 60000) || 0,
+            seconds = Math.floor((this.props.mil - minutes * 1000 * 60) / 1000) || 0
         return (
             <View>
                 <Text>{this.props.mil}</Text>
