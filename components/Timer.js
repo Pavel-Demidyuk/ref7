@@ -89,7 +89,7 @@ export default class Timer extends React.Component {
                     fontFamily: 'roboto-mono',
                     fontSize: 42,
                     color: "#000"
-                }}>{this.state.minutes}:{this.state.seconds}:{this.state.millis}</Text>
+                }}>{this.state.minutes < 10 ? this.state.minutes : "0" + this.state.minutes}:{this.state.seconds < 10 ? this.state.seconds : "0" + this.state.seconds}:{this.state.millis < 10 ? this.state.millis : "0" + this.state.millis}</Text>
             </View>
         );
     }
