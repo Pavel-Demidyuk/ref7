@@ -23,17 +23,15 @@ export default class StartButton extends React.Component {
             this.setState({
                 started: false,
                 text: START_TEXT,
-                gradientColors: ['#B53471', '#c0392b'],
+                gradientColors: ['#2ecc71', '#1abc9c'],
             })
         } else {
             this.setState({
                 started: true,
-                gradientColors: ['#2ecc71', '#1abc9c'],
-                text: STOP_TEXT
+                text: STOP_TEXT,
+                gradientColors: ['#B53471', '#c0392b'],
             })
         }
-
-
     }
 
     render() {
