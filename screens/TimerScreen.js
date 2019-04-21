@@ -4,7 +4,6 @@ import Loader from '../components/Loader'
 import { StyleSheet, Text, View } from 'react-native';
 import StartButton from '../components/StartButton';
 import Timer from '../components/Timer.js'
-import { Bars } from 'react-native-loader';
 export default class TimerScreen extends React.Component {
 
    static navigationOptions = {
@@ -13,69 +12,9 @@ export default class TimerScreen extends React.Component {
    }
 
    state = {
-       fontLoaded: false
+       fontLoaded: false,
+       buttonTextRender: 'START',
    }
-
-   //
-   // constructor(props) {
-   //     super(props)
-   //
-   //     this.state = {
-   //         _start: false,
-   //         millis: "00",
-   //         minutes: "00",
-   //         seconds: "00",
-   //         start_millis: null,
-   //         fontLoaded: false,
-   //         buttonTextRender: 'START',
-   //
-   //     }
-   // }
-   //
-   // set_time() {
-   //
-   //     var d = new Date();
-   //     var mil = d.getMilliseconds()
-   //     var sec = d.getSeconds()
-   //     var min = d.getMinutes()
-   //     var h = d.getHours()
-   //     var all_millis = mil + sec * 1000 + min * 60000 + h * 3600 * 1000
-   //
-   //     this.setState({
-   //         start_time: all_millis
-   //     })
-   //
-   //     this.counter()
-   // }
-   //
-   // counter() {
-   //
-   //     var d = new Date();
-   //     var mil = d.getMilliseconds()
-   //     var sec = d.getSeconds()
-   //     var min = d.getMinutes()
-   //     var h = d.getHours()
-   //     var all_millis_end = mil + sec * 1000 + min * 60000 + h * 3600 * 1000
-   //     var millis2 = all_millis_end - this.state.start_millis
-   //     var minutes = Math.floor(millis2 / 1000 / 60)
-   //     var seconds = Math.floor((millis2 - minutes * 60 * 1000) / 1000)
-   //     var millis = Math.floor((millis2 - minutes * 60 * 1000 - seconds * 1000) / 10)
-   //     this.setState({
-   //
-   //         millis: millis < 10 ? "0" + millis : millis,
-   //         minutes: minutes < 10 ? "0" + minutes : minutes,
-   //         seconds: seconds < 10 ? "0" + seconds : seconds,
-   //
-   //     })
-   //
-   //     clearInterval(this.interval);
-   //     this.interval = setInterval(() => {
-   //         if (this.state._start) {
-   //             this.counter()
-   //         }
-   //     }, 10)
-   //
-   // }
 
    async componentDidMount() {
        await Font.loadAsync({
@@ -95,7 +34,6 @@ export default class TimerScreen extends React.Component {
                    diff: new Date() - startDate
                }
            )
-
            clearInterval(this.interval);
            this.interval = setInterval(() => {
                if (this.state.started) {
@@ -103,14 +41,13 @@ export default class TimerScreen extends React.Component {
                }
            }, 995)
        }
-
        counter()
    }
 
    stop() {
-       this.setState({
-           started: false
-       })
+     this.setState({
+         started: false
+     })
    }
 
    action = (flag) => {
@@ -120,95 +57,59 @@ export default class TimerScreen extends React.Component {
    render() {
        if (!this.state.fontLoaded) {
            return (
-               <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
-                   <Bars size={20} color="#000"/>
-               </View>
+             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+                <Loader />
+             </View>
            )
-           return
        }
-       if (this.state.started) {
+       if (!this.state.started) {
            return (
-               <View style={{marginTop:20}}>
-                   <Text>{this.state.diff}</Text>
-                   <Timer mil = {this.state.diff}/>
-                   <StartButton action={(flag) => {
-                       this.action(flag)
-                   }}/>
-               </View>
+              <View style={{flex: 1, backgroundColor: "#F0F0F0", alignItems: 'center', marginTop: 60}}>
+                  <View style={styles.secondFloor}>
+                      <View style={styles.timerCircleGreen}>
+                          <Text style={{fontFamily: 'roboto-mono', fontSize: 42, color: "#000"}}>00:00:00</Text>
+                      </View>
+                      <View style={{marginTop: 50}}>
+                          <View style={{flexDirection: 'row'}}>
+                             <Text style={{color: "#000", fontSize: 19}}>2 Referee</Text>
+                             <Text style={{color: "#666666", fontSize: 17, fontFamily: 'roboto-mono', marginLeft: 50}}>01:18:03</Text>
+                          </View>
+                          <View style={{flexDirection: 'row', marginTop: 10}}>
+                             <Text style={{color: "#000", fontSize: 19}}>3 Referee</Text>
+                             <Text style={{color: "#666666", fontFamily: 'roboto-mono', fontSize: 17, marginLeft: 50}}>01:20:09</Text>
+                          </View>
+                     </View>
+                  </View>
+                  <View style={{marginTop: 10, height: 75, backgroundColor: "#F0F0F0", alignItems: 'center', justifyContent: 'center'}}>
+                      <StartButton action={(flag) => {this.action(flag)}} />
+                  </View>
+              </View>
            );
        } else {
            return (
-               <View  style={{marginTop:20}}>
-                  <Timer mil = {this.state.diff}/>
-                   <StartButton action={(flag) => {
-                       this.action(flag)
-                   }}/>
-               </View>
-
+              <View style={{flex: 1, backgroundColor: "#F0F0F0", alignItems: 'center', marginTop: 60}}>
+                 <View style={styles.secondFloor}>
+                         <View style={styles.timerCircleRed}>
+                            <Timer mil = {this.state.diff}/>
+                          </View>
+                          <View style={{marginTop: 50}}>
+                          <View style={{flexDirection: 'row'}}>
+                              <Text style={{color: "#000", fontSize: 19}}>2 Referee</Text>
+                              <Text style={{color: "#666666", fontSize: 17, fontFamily: 'roboto-mono', marginLeft: 50}}>01:18:03</Text>
+                          </View>
+                          <View style={{flexDirection: 'row', marginTop: 10}}>
+                              <Text style={{color: "#000", fontSize: 19}}>3 Referee</Text>
+                              <Text style={{color: "#666666", fontFamily: 'roboto-mono', fontSize: 17, marginLeft: 50}}>01:20:09</Text>
+                          </View>
+                      </View>
+                  </View>
+                  <View style={{marginTop: 10, height: 75, justifyContent: 'center', alignItems: 'center'}}>
+                      <StartButton action={(flag) => {this.action(flag)}} />
+                  </View>
+              </View>
            );
-
-
-
        }
    }
-
-//     render() {
-//         if (this.state.fontLoaded) {
-//             if  (this.state.buttonTextRender === 'START') {
-//                 return (
-//                     <View style={{flex: 1, backgroundColor: "#F0F0F0", alignItems: 'center'}}>
-//                         <View style={styles.secondFloor}>
-//                             <View style={styles.timerCircleGreen}>
-//                                 <Text style={{fontFamily: 'roboto-mono', fontSize: 42, color: "#000"}}>{this.state.minutes}:{this.state.seconds}:{this.state.millis}</Text>
-//                             </View>
-//                             <View style={{marginTop: 50}}>
-//                                 <View style={{flexDirection: 'row'}}>
-//                                     <Text style={{color: "#000", fontSize: 19}}>2 Referee</Text>
-//                                     <Text style={{color: "#666666", fontSize: 17, fontFamily: 'roboto-mono', marginLeft: 50}}>01:18:03</Text>
-//                                 </View>
-//                                 <View style={{flexDirection: 'row', marginTop: 10}}>
-//                                     <Text style={{color: "#000", fontSize: 19}}>3 Referee</Text>
-//                                     <Text style={{color: "#666666", fontFamily: 'roboto-mono', fontSize: 17, marginLeft: 50}}>01:20:09</Text>
-//                                 </View>
-//                             </View>
-//                         </View>
-//                         <View style={{marginTop: 10, height: 75, backgroundColor: "#F0F0F0", alignItems: 'center', justifyContent: 'center'}}>
-//                             <GradientButton updateData={this.updateData}/>
-//                         </View>
-//                     </View>
-//                 );
-//             } else {
-//                 return (
-//                     <View style={{flex: 1, backgroundColor: "#F0F0F0", alignItems: 'center'}}>
-//                         <View style={styles.secondFloor}>
-//                             <View style={styles.timerCircleRed}>
-//                                 <Text style={{fontFamily: 'roboto-mono', fontSize: 42, color: "#000"}}>{this.state.minutes}:{this.state.seconds}:{this.state.millis}</Text>
-//                             </View>
-//                             <View style={{marginTop: 50}}>
-//                                 <View style={{flexDirection: 'row'}}>
-//                                     <Text style={{color: "#000", fontSize: 19}}>2 Referee</Text>
-//                                     <Text style={{color: "#666666", fontSize: 17, fontFamily: 'roboto-mono', marginLeft: 50}}>01:18:03</Text>
-//                                 </View>
-//                                 <View style={{flexDirection: 'row', marginTop: 10}}>
-//                                     <Text style={{color: "#000", fontSize: 19}}>3 Referee</Text>
-//                                     <Text style={{color: "#666666", fontFamily: 'roboto-mono', fontSize: 17, marginLeft: 50}}>01:20:09</Text>
-//                                 </View>
-//                             </View>
-//                         </View>
-//                         <View style={{marginTop: 10, height: 75, justifyContent: 'center', alignItems: 'center'}}>
-//                             <GradientButton updateData={this.updateData}/>
-//                         </View>
-//                     </View>
-//                 );
-//             }
-//         } else {
-//             return (
-//                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
-//                     <Bars size={20} color="#000" />
-//                 </View>
-//             );
-//         }
-//     }
 }
 
 const styles = StyleSheet.create({

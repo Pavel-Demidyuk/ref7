@@ -85,7 +85,6 @@ export default class Timer extends React.Component {
 
         return (
             <View>
-                <Text>{this.props.mil}</Text>
                 <Text style={{
                     fontFamily: 'roboto-mono',
                     fontSize: 42,
