@@ -95,10 +95,4 @@ export default class Timer extends React.Component {
 }
 
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#F0F0F0',
-        flex: 1
-    }
-});
-export {Timer}
+export { Timer }
