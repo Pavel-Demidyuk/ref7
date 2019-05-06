@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import QRCode from 'react-native-qrcode';
 import * as firebase from 'firebase'
 import BlockButton from './BlockButton'
@@ -54,18 +55,18 @@ class QrDisplay extends React.Component {
                     <View style={styles.circle}>
                         <QRCode value={this.state.pin} size={140} bgColor='black' fgColor='white'/>
                     </View>
-                    <View style={{marginTop: 50}}>
+                    <View style={{marginTop: wp('20%')}}>
                         <View style={{flexDirection: 'row'}}>
                             <Text style={{color: "#000", fontSize: 19}}>Referee 1</Text>
-                            <Text style={{color: "#666666", fontSize: 17, marginLeft: 50}}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
+                            <Text style={{color: "#666666", fontSize: 17, marginLeft: wp('14%')}}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
                         </View>
-                        <View style={{flexDirection: 'row', marginTop: 10}}>
+                        <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
                             <Text style={{color: "#000", fontSize: 19}}>Referee 2</Text>
-                            <Text style={{color: "#666666", fontSize: 17, marginLeft: 50}}>{this.state.sideReferees[0] ? 'Connected' : 'Connecting...'}</Text>
+                            <Text style={{color: "#666666", fontSize: 17, marginLeft: wp('14%')}}>{this.state.sideReferees[0] ? 'Connected' : 'Connecting...'}</Text>
                         </View>
                     </View>
                 </View>
-                <View style={{marginTop: 20, height: 75, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{marginTop: wp('6%'), justifyContent: 'center', alignItems: 'center'}}>
                     <BlockButton />
                 </View>
             </View>
@@ -76,17 +77,16 @@ class QrDisplay extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 20,
         backgroundColor: '#fff',
         alignItems: 'center',
     },
 
     qrCard: {
-        marginTop: 30,
-        width: 270,
-        height: 400,
+        marginTop: hp('10%'),
+        width: wp('75%'),
+        height: wp('120%'),
         shadowColor: "#000",
-        shadowOffset: {width: 0, height: 4},
+        shadowOffset: {width: 0, height: 3},
         shadowOpacity: 0.37,
         shadowRadius: 6.49,
         elevation: 8,
@@ -97,10 +97,13 @@ const styles = StyleSheet.create({
     },
 
     circle: {
-        marginTop: 20,
-        width: 230,
-        height: 230,
-        borderRadius: 115,
+        marginTop: wp('6%'),
+        width: wp('64%'),
+        height: wp('64%'),
+        borderTopLeftRadius: wp('32%'),
+        borderTopRightRadius: wp('32%'),
+        borderBottomLeftRadius: wp('32%'),
+        borderBottomRightRadius: wp('32%'),
         borderColor: "#2ECC71",
         borderWidth: 2,
         backgroundColor: "#fff",
