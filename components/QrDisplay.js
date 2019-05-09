@@ -15,7 +15,8 @@ class QrDisplay extends React.Component {
             numeric: true,
             letters: false,
             special: false,
-        })
+        }),
+        textColor: "#666666"
     }
 
     componentWillMount() {
@@ -34,8 +35,24 @@ class QrDisplay extends React.Component {
                 this.setState({
                     sideReferees: sideReferees
                 })
+
+                console.log(sideReferees)
+
+                if (result.val()[key] === true) {
+                   this.setState({
+                     textColor: "#2ECC71"
+                   })
+
+                } else {
+                  this.setState({
+                    textColor: "#666666"
+                  })
+
+                }
             }
         })
+
+
 
         clearInterval(this.interval);
         this.interval = setInterval(() => {
@@ -49,20 +66,63 @@ class QrDisplay extends React.Component {
     }
 
     render() {
+        const styles = StyleSheet.create({
+            container: {
+                flex: 1,
+                backgroundColor: '#fff',
+                alignItems: 'center',
+            },
+            qrCard: {
+                marginTop: hp('10%'),
+                width: wp('75%'),
+                height: wp('120%'),
+                shadowColor: "#000",
+                shadowOffset: {width: 0, height: 3},
+                shadowOpacity: 0.37,
+                shadowRadius: 6.49,
+                elevation: 8,
+                borderRadius: 15,
+                borderColor: "#E8E8E8",
+                backgroundColor: "#fff",
+                alignItems: 'center',
+            },
+            circle: {
+                marginTop: wp('6%'),
+                width: wp('64%'),
+                height: wp('64%'),
+                borderTopLeftRadius: wp('32%'),
+                borderTopRightRadius: wp('32%'),
+                borderBottomLeftRadius: wp('32%'),
+                borderBottomRightRadius: wp('32%'),
+                borderColor: "#2ECC71",
+                borderWidth: 2,
+                backgroundColor: "#fff",
+                justifyContent: 'center',
+                textAlign: 'center',
+                alignItems: 'center',
+            },
+
+            connectionText: {
+                color: this.state.textColor,
+                fontSize: 17,
+                marginLeft: wp('14%')
+            }
+        });
+
         return (
             <View style={styles.container}>
-                <View style={styles.qrCard}>
-                    <View style={styles.circle}>
+                <View style={this.styles.qrCard}>
+                    <View style={this.styles.circle}>
                         <QRCode value={this.state.pin} size={140} bgColor='black' fgColor='white'/>
                     </View>
                     <View style={{marginTop: wp('20%')}}>
                         <View style={{flexDirection: 'row'}}>
                             <Text style={{color: "#000", fontSize: 19}}>Referee 1</Text>
-                            <Text style={{color: "#666666", fontSize: 17, marginLeft: wp('14%')}}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
+                            <Text style={this.styles.connectionText}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
                         </View>
                         <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
                             <Text style={{color: "#000", fontSize: 19}}>Referee 2</Text>
-                            <Text style={{color: "#666666", fontSize: 17, marginLeft: wp('14%')}}>{this.state.sideReferees[0] ? 'Connected' : 'Connecting...'}</Text>
+                            <Text style={this.styles.connectionText}>{this.state.sideReferees[0] ? 'Connected' : 'Connecting...'}</Text>
                         </View>
                     </View>
                 </View>
@@ -73,44 +133,5 @@ class QrDisplay extends React.Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-    },
-
-    qrCard: {
-        marginTop: hp('10%'),
-        width: wp('75%'),
-        height: wp('120%'),
-        shadowColor: "#000",
-        shadowOffset: {width: 0, height: 3},
-        shadowOpacity: 0.37,
-        shadowRadius: 6.49,
-        elevation: 8,
-        borderRadius: 15,
-        borderColor: "#E8E8E8",
-        backgroundColor: "#fff",
-        alignItems: 'center',
-    },
-
-    circle: {
-        marginTop: wp('6%'),
-        width: wp('64%'),
-        height: wp('64%'),
-        borderTopLeftRadius: wp('32%'),
-        borderTopRightRadius: wp('32%'),
-        borderBottomLeftRadius: wp('32%'),
-        borderBottomRightRadius: wp('32%'),
-        borderColor: "#2ECC71",
-        borderWidth: 2,
-        backgroundColor: "#fff",
-        justifyContent: 'center',
-        textAlign: 'center',
-        alignItems: 'center',
-    },
-});
 
 export { QrDisplay }
