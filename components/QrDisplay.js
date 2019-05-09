@@ -70,7 +70,7 @@ class QrDisplay extends React.Component {
             container: {
                 flex: 1,
                 backgroundColor: '#fff',
-                alignItems: 'center',
+                alignItems: 'center'
             },
             qrCard: {
                 marginTop: hp('10%'),
@@ -111,18 +111,18 @@ class QrDisplay extends React.Component {
 
         return (
             <View style={styles.container}>
-                <View style={this.styles.qrCard}>
-                    <View style={this.styles.circle}>
+                <View style={styles.qrCard}>
+                    <View style={styles.circle}>
                         <QRCode value={this.state.pin} size={140} bgColor='black' fgColor='white'/>
                     </View>
                     <View style={{marginTop: wp('20%')}}>
                         <View style={{flexDirection: 'row'}}>
                             <Text style={{color: "#000", fontSize: 19}}>Referee 1</Text>
-                            <Text style={this.styles.connectionText}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
+                            <Text style={styles.connectionText}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
                         </View>
                         <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
                             <Text style={{color: "#000", fontSize: 19}}>Referee 2</Text>
-                            <Text style={this.styles.connectionText}>{this.state.sideReferees[0] ? 'Connected' : 'Connecting...'}</Text>
+                            <Text style={styles.connectionText}>{this.state.sideReferees[0] ? 'Connected' : 'Connecting...'}</Text>
                         </View>
                     </View>
                 </View>
