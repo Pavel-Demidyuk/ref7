@@ -9,6 +9,12 @@ const
 
 export default class StartButton extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+        this.action = this.props.action
+    }
+
     state = {
         started: false,
         text: START_TEXT,
@@ -17,22 +23,24 @@ export default class StartButton extends React.Component {
 
     onPressActionButton() {
 
-        this.props.action(this.state.started ? false : true)
+        this.action(!this.state.started)
 
-        if (this.state.started) {
+        if (!this.state.started) {
             this.setState({
-                started: false,
-                text: START_TEXT,
+                started: true,
+                text: STOP_TEXT,
                 gradientColors: ['#B53471', '#c0392b'],
             })
         } else {
             this.setState({
-                started: true,
+                started: false,
                 gradientColors: ['#2ecc71', '#1abc9c'],
-                text: STOP_TEXT
+                text: START_TEXT
             })
         }
+    }
 
+    componentWillUnmount () {
 
     }
 
