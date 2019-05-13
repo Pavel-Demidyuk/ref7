@@ -36,9 +36,9 @@ class QrDisplay extends React.Component {
                     sideReferees: sideReferees
                 })
 
-                console.log(sideReferees)
+                console.log(result.val()[key])
 
-                if (result.val()[key] === true) {
+                if (result.val()[key] != null) {
                    this.setState({
                      textColor: "#2ECC71"
                    })
@@ -118,11 +118,11 @@ class QrDisplay extends React.Component {
                     <View style={{marginTop: wp('20%')}}>
                         <View style={{flexDirection: 'row'}}>
                             <Text style={{color: "#000", fontSize: 19}}>Referee 1</Text>
-                            <Text style={styles.connectionText}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
+                            <Text style={styles.connectionText}>{this.state.sideReferees[0] ? 'Connected' : 'Connecting...'}</Text>
                         </View>
                         <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
                             <Text style={{color: "#000", fontSize: 19}}>Referee 2</Text>
-                            <Text style={styles.connectionText}>{this.state.sideReferees[0] ? 'Connected' : 'Connecting...'}</Text>
+                            <Text style={styles.connectionText}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
                         </View>
                     </View>
                 </View>
