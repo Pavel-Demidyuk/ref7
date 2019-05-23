@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Bars } from 'react-native-loader';
 import { LinearGradient, Font } from 'expo';
 
@@ -33,22 +34,22 @@ export default class Results extends React.Component {
               >
                   <View style={styles.resultsCard}>
                       <View style={styles.averageCircle}>
-                          <Text style={styles.average}>1:08:12</Text>
+                          <Text style={styles.average}>01:08:12</Text>
                       </View>
                       <View style={{textAlign: 'center', alignItems: 'center'}}>
-                          <View style={{flexDirection: 'row', marginTop: 30}}>
+                          <View style={{flexDirection: 'row', marginTop: wp('15%')}}>
                               <Text style={{fontSize: 19, color: "#000"}}>Referee 1</Text>
-                              <Text style={{fontFamily: 'roboto-mono', fontSize: 17, color: "#2ECC71", marginLeft: 50}}>01:06:47</Text>
+                              <Text style={{fontFamily: 'roboto-mono', fontSize: 17, color: "#2ECC71", marginLeft: wp('14%')}}>01:06:47</Text>
                           </View>
-                          <View style={{borderWidth: 0.5, height: 0, width: 206, borderColor: "#DDDDDD", marginTop: 15}}></View>
-                          <View style={{flexDirection: 'row', marginTop: 10}}>
+                          <View style={{borderWidth: 0.5, height: 0, width: wp('57%'), borderColor: "#DDDDDD", marginTop: wp('4%')}}></View>
+                          <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
                               <Text style={{fontSize: 19, color: "#000"}}>Referee 2</Text>
-                              <Text style={{fontFamily: 'roboto-mono', fontSize: 17, color: "#2ECC71", marginLeft: 50}}>01:10:19</Text>
+                              <Text style={{fontFamily: 'roboto-mono', fontSize: 17, color: "#2ECC71", marginLeft: wp('14%')}}>01:10:19</Text>
                           </View>
-                          <View style={{borderWidth: 0.5, height: 0, width: 206, borderColor: "#DDDDDD", marginTop: 15}}></View>
-                          <View style={{flexDirection: 'row', marginTop: 10}}>
+                          <View style={{borderWidth: 0.5, height: 0, width: wp('57%'), borderColor: "#DDDDDD", marginTop: wp('4%')}}></View>
+                          <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
                               <Text style={{fontSize: 19, color: "#000"}}>Referee 3</Text>
-                              <Text style={{fontFamily: 'roboto-mono', fontSize: 17, color: "#2ECC71", marginLeft: 50}}>01:08:34</Text>
+                              <Text style={{fontFamily: 'roboto-mono', fontSize: 17, color: "#2ECC71", marginLeft: wp('14%')}}>01:08:34</Text>
                           </View>
                       </View>
                   </View>
@@ -66,9 +67,8 @@ export default class Results extends React.Component {
 
 const styles = StyleSheet.create({
     resultsCard: {
-      marginTop: 20,
-      width: 270,
-      height: 440,
+      width: wp('75%'),
+      height: wp('130%'),
       backgroundColor: "#fff",
       alignItems: 'center',
       borderWidth: 1,
@@ -85,11 +85,14 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       textAlign: 'center',
       alignItems: 'center',
-      marginTop: 20,
-      width: 230,
-      height: 230,
+      marginTop: wp('6%'),
+      width: wp('64%'),
+      height: wp('64%'),
       backgroundColor: "#fff",
-      borderRadius: 150,
+      borderTopLeftRadius: wp('32%'),
+      borderTopRightRadius: wp('32%'),
+      borderBottomLeftRadius: wp('32%'),
+      borderBottomRightRadius: wp('32%'),
       borderWidth: 2,
       borderColor: "#2ECC71",
     },
