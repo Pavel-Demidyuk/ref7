@@ -45,23 +45,16 @@ export default class TimerScreen extends React.Component {
            }, 995)
        }
        counter()
-
-       if (!this.state.started) {
-         this.setState({
-           circleBorder: "#2ECC71"
-         })
-
-       } else {
-         this.setState({
-           circleBorder: "#E44B40"
-         })
-
-       }
+       
+       this.setState({
+         circleBorder: "#E44B40"
+       })
    }
 
    stop() {
      this.setState({
-         started: false
+         started: false,
+         circleBorder: "#2ECC71"
      })
    }
 
@@ -101,7 +94,7 @@ export default class TimerScreen extends React.Component {
             borderBottomRightRadius: wp('32%'),
             borderColor: this.state.circleBorder,
             borderWidth: 2,
-            backgroundColor: "#2ECC71",
+            backgroundColor: "#fff",
             shadowColor: "#000",
             shadowOffset: {width: 0, height: 2},
             shadowOpacity: 0.2,

@@ -16,7 +16,8 @@ class QrDisplay extends React.Component {
             letters: false,
             special: false,
         }),
-        textColor: "#666666"
+        textColor: "#666666",
+        textColor1: "#666666"
     }
 
     componentWillMount() {
@@ -36,9 +37,7 @@ class QrDisplay extends React.Component {
                     sideReferees: sideReferees
                 })
 
-                console.log(result.val()[key])
-
-                if (result.val()[key] != null) {
+                if (this.state.sideReferees[0] != null) {
                    this.setState({
                      textColor: "#2ECC71"
                    })
@@ -46,6 +45,18 @@ class QrDisplay extends React.Component {
                 } else {
                   this.setState({
                     textColor: "#666666"
+                  })
+
+                }
+
+                if (this.state.sideReferees[1] != null) {
+                   this.setState({
+                     textColor1: "#2ECC71"
+                   })
+
+                } else {
+                  this.setState({
+                    textColor1: "#666666"
                   })
 
                 }
@@ -106,6 +117,12 @@ class QrDisplay extends React.Component {
                 color: this.state.textColor,
                 fontSize: 17,
                 marginLeft: wp('14%')
+            },
+
+            connectionText1: {
+                color: this.state.textColor1,
+                fontSize: 17,
+                marginLeft: wp('14%')
             }
         });
 
@@ -122,7 +139,7 @@ class QrDisplay extends React.Component {
                         </View>
                         <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
                             <Text style={{color: "#000", fontSize: 19}}>Referee 2</Text>
-                            <Text style={styles.connectionText}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
+                            <Text style={styles.connectionText1}>{this.state.sideReferees[1] ? 'Connected' : 'Connecting...'}</Text>
                         </View>
                     </View>
                 </View>
