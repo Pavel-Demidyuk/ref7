@@ -1,10 +1,11 @@
 import React from 'react';
 import {Font} from 'expo';
 import { StyleSheet, Text, View } from 'react-native';
-import { Loader } from '../components/Loader';
+import Loader from '../components/Loader';
 import StartButton from '../components/StartButton';
 import Timer from '../components/Timer.js'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 export default class TimerScreen extends React.Component {
 
    static navigationOptions = {
@@ -102,7 +103,7 @@ export default class TimerScreen extends React.Component {
 
        if (!this.state.fontLoaded) {
            return (
-             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+             <View>
                 <Loader />
              </View>
            )
