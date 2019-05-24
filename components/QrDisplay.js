@@ -68,6 +68,7 @@ class QrDisplay extends React.Component {
                 let sideReferees = []
                 for (let key in result.val()) {
                     sideReferees.push(result.val()[key])
+                    console.log("key:" + key)
                 }
 
                 this.setState({
