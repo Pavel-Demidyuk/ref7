@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default class Timer extends React.Component {
     render() {
@@ -9,7 +10,7 @@ export default class Timer extends React.Component {
             <View>
                 <Text style={{
                     fontFamily: 'roboto-mono',
-                    fontSize: 42,
+                    fontSize: wp('12%'),
                     color: "#000"
                 }}>{this.state.minutes > 10 ? this.state.minutes : "0" + this.state.minutes}:{this.state.seconds > 10 ? this.state.seconds : "0" + this.state.seconds}:{this.state.millis > 10 ? this.state.millis : "0" + this.state.millis}</Text>
             </View>

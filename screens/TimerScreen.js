@@ -120,12 +120,12 @@ export default class TimerScreen extends React.Component {
                           </View>
                           <View style={{marginTop: wp('25%')}}>
                           <View style={{flexDirection: 'row'}}>
-                              <Text style={{color: "#000", fontSize: 19}}>2 Referee</Text>
-                              <Text style={{color: "#666666", fontSize: 17, fontFamily: 'roboto-mono', marginLeft: wp('14%')}}>01:18:03</Text>
+                              <Text style={{color: "#000", fontSize: wp('5%')}}>2 Referee</Text>
+                              <Text style={{color: "#666666", fontSize: wp('5%'), fontFamily: 'roboto-mono', marginLeft: wp('14%')}}>01:18:03</Text>
                           </View>
                           <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
-                              <Text style={{color: "#000", fontSize: 19}}>3 Referee</Text>
-                              <Text style={{color: "#666666", fontFamily: 'roboto-mono', fontSize: 17, marginLeft: wp('14%')}}>01:20:09</Text>
+                              <Text style={{color: "#000", fontSize: wp('5%')}}>3 Referee</Text>
+                              <Text style={{color: "#666666", fontFamily: 'roboto-mono', fontSize: wp('5%'), marginLeft: wp('14%')}}>01:20:09</Text>
                           </View>
                       </View>
                   </View>
