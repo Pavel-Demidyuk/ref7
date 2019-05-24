@@ -1,6 +1,7 @@
 import React from 'react';
 import {Font} from 'expo';
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Loader } from '../components/Loader';
 import StartButton from '../components/StartButton';
 import Timer from '../components/Timer.js'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
