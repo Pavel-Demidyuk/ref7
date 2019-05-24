@@ -24,6 +24,10 @@ export default class TimerScreen extends React.Component {
        await Font.loadAsync({
            'roboto-mono': require('../assets/fonts/RobotoMono-Regular.ttf')
        });
+       
+       this.setState({
+         fontLoaded: true
+       });
    }
 
    start() {
@@ -103,7 +107,7 @@ export default class TimerScreen extends React.Component {
 
        if (!this.state.fontLoaded) {
            return (
-             <View>
+             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                 <Loader />
              </View>
            )
