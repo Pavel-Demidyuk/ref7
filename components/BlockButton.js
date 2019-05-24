@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export default class BlockButton extends React.Component {
 
@@ -47,8 +48,8 @@ export default class BlockButton extends React.Component {
 
 const styles = StyleSheet.create({
   blockButtonOutline: {
-    width: 270,
-    height: 45,
+    width: wp('75%'),
+    height: wp('12%'),
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
@@ -57,15 +58,15 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#2DCB73',
     shadowColor: "#2DCB73",
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.22,
+    shadowOffset: {width: 3, height: 3},
+    shadowOpacity: 0.62,
     shadowRadius: 2.22,
-    elevation: 3,
+    elevation: 5,
   },
 
   blockButtonPressed: {
-    width: 270,
-    height: 45,
+    width: wp('75%'),
+    height: wp('12%'),
     backgroundColor: '#2DCB73',
     justifyContent: 'center',
     alignItems: 'center',
@@ -74,10 +75,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#2DCB73',
     shadowColor: "#2DCB73",
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.22,
+    shadowOffset: {width: 3, height: 3},
+    shadowOpacity: 0.62,
     shadowRadius: 2.22,
-    elevation: 3,
+    elevation: 5,
   },
 
   titleGreen: {

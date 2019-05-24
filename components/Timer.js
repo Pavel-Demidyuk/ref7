@@ -1,6 +1,5 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Ionicons} from '@expo/vector-icons';
 
 export default class Timer extends React.Component {
     render() {
@@ -8,21 +7,15 @@ export default class Timer extends React.Component {
             seconds = Math.floor((this.props.mil - minutes * 1000 * 60) / 1000) || 0
         return (
             <View>
-                <Text>{this.props.mil}</Text>
                 <Text style={{
                     fontFamily: 'roboto-mono',
                     fontSize: 42,
                     color: "#000"
-                }}>{minutes}:{seconds}</Text>
+                }}>{this.state.minutes > 10 ? this.state.minutes : "0" + this.state.minutes}:{this.state.seconds > 10 ? this.state.seconds : "0" + this.state.seconds}:{this.state.millis > 10 ? this.state.millis : "0" + this.state.millis}</Text>
             </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#F0F0F0',
-        flex: 1
-    }
-});
-export {Timer}
+
+export { Timer }

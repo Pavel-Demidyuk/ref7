@@ -2,6 +2,7 @@ import React from 'react';
 import { LinearGradient } from 'expo';
 import Ripple from 'react-native-material-ripple';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 const
     START_TEXT = 'START',
@@ -27,21 +28,17 @@ export default class StartButton extends React.Component {
 
         if (!this.state.started) {
             this.setState({
+                started: false,
+                text: START_TEXT,
+                gradientColors: ['#2ecc71', '#1abc9c'],
+            })
+        } else {
+            this.setState({
                 started: true,
                 text: STOP_TEXT,
                 gradientColors: ['#B53471', '#c0392b'],
             })
-        } else {
-            this.setState({
-                started: false,
-                gradientColors: ['#2ecc71', '#1abc9c'],
-                text: START_TEXT
-            })
         }
-    }
-
-    componentWillUnmount () {
-
     }
 
     render() {
@@ -51,13 +48,13 @@ export default class StartButton extends React.Component {
                     onPress={() => this.onPressActionButton()}
                     rippleCentered={false}
                     rippleContainerBorderRadius={25}
-                    style={{height: 45, width: 155, borderRadius: 25}}
+                    style={{height: wp('12%'), width: wp('43%'), borderRadius: 25}}
                 >
                     <TouchableOpacity style={styles.rippleStart}>
                         <LinearGradient
                             style={{
-                                height: 47,
-                                width: 155,
+                                height: wp('13%'),
+                                width: wp('43%'),
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 borderRadius: 25,
