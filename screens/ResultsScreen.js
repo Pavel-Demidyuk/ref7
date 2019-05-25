@@ -6,6 +6,12 @@ import { LinearGradient, Font } from 'expo';
 
 export default class Results extends React.Component {
 
+    static navigationOptions = {
+        header: null,
+        headerMode: 'none',
+
+    }
+
     constructor(props) {
       super(props)
 
