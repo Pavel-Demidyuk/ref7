@@ -59,6 +59,10 @@ export default class TimerScreen extends React.Component {
      })
    }
 
+   action = flag => {
+     flag ? this.start() : this.stop()
+   }
+
    render() {
      const styles = StyleSheet.create({
         container: {
