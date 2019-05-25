@@ -2,6 +2,10 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 export default class Timer extends React.Component {
+  state = {
+      minutes:null,
+      seconds:null
+  }
     render() {
         let minutes = Math.floor(this.props.mil / 60000) || 0,
             seconds = Math.floor((this.props.mil - minutes * 1000 * 60) / 1000) || 0
@@ -11,7 +15,7 @@ export default class Timer extends React.Component {
                     fontFamily: 'roboto-mono',
                     fontSize: 42,
                     color: "#000"
-                }}>{this.state.minutes > 10 ? this.state.minutes : "0" + this.state.minutes}:{this.state.seconds > 10 ? this.state.seconds : "0" + this.state.seconds}:{this.state.millis > 10 ? this.state.millis : "0" + this.state.millis}</Text>
+                }}>{minutes > 10 ? minutes : "0" + minutes}:{seconds > 10 ? seconds : "0" + seconds}</Text>
             </View>
         );
     }

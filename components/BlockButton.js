@@ -82,12 +82,12 @@ const styles = StyleSheet.create({
   },
 
   titleGreen: {
-    fontSize: 18,
+    fontSize: wp('5%'),
     color: '#2DCB73'
   },
 
   titleWhite: {
-    fontSize: 18,
+    fontSize: wp('5%'),
     color: '#fff'
   }
 });

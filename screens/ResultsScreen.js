@@ -38,17 +38,17 @@ export default class Results extends React.Component {
                       </View>
                       <View style={{textAlign: 'center', alignItems: 'center'}}>
                           <View style={{flexDirection: 'row', marginTop: wp('15%')}}>
-                              <Text style={{fontSize: 19, color: "#000"}}>Referee 1</Text>
+                              <Text style={{fontSize:  wp('5%'), color: "#000"}}>Referee 1</Text>
                               <Text style={{fontFamily: 'roboto-mono', fontSize: 17, color: "#2ECC71", marginLeft: wp('14%')}}>01:06:47</Text>
                           </View>
                           <View style={{borderWidth: 0.5, height: 0, width: wp('57%'), borderColor: "#DDDDDD", marginTop: wp('4%')}}></View>
                           <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
-                              <Text style={{fontSize: 19, color: "#000"}}>Referee 2</Text>
+                              <Text style={{fontSize:  wp('5%'), color: "#000"}}>Referee 2</Text>
                               <Text style={{fontFamily: 'roboto-mono', fontSize: 17, color: "#2ECC71", marginLeft: wp('14%')}}>01:10:19</Text>
                           </View>
                           <View style={{borderWidth: 0.5, height: 0, width: wp('57%'), borderColor: "#DDDDDD", marginTop: wp('4%')}}></View>
                           <View style={{flexDirection: 'row', marginTop: wp('3%')}}>
-                              <Text style={{fontSize: 19, color: "#000"}}>Referee 3</Text>
+                              <Text style={{fontSize: wp('5%'), color: "#000"}}>Referee 3</Text>
                               <Text style={{fontFamily: 'roboto-mono', fontSize: 17, color: "#2ECC71", marginLeft: wp('14%')}}>01:08:34</Text>
                           </View>
                       </View>
