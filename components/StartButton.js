@@ -47,7 +47,7 @@ export default class StartButton extends React.Component {
                 <Ripple
                     onPress={() => this.onPressActionButton()}
                     rippleCentered={false}
-                    rippleContainerBorderRadius={25}
+                    rippleContainerBorderRadius={wp('7%')}
                     style={{height: wp('12%'), width: wp('43%'), borderRadius: 25}}
                 >
                     <TouchableOpacity style={styles.rippleStart}>
@@ -62,7 +62,7 @@ export default class StartButton extends React.Component {
                             colors={this.state.gradientColors}
                         >
                             <Text
-                                style={{fontSize: 16, fontWeight: '600', color: '#fff'}}>{this.state.text}</Text>
+                                style={{fontSize: wp('4%'), fontWeight: '600', color: '#fff'}}>{this.state.text}</Text>
                         </LinearGradient>
                     </TouchableOpacity>
                 </Ripple>
