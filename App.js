@@ -10,16 +10,26 @@ export default class App extends React.Component {
     constructor(props) {
         super(props)
 
-        var config = {
-            apiKey: "AIzaSyDxqDaTcAUR3R6fZwI7PSz5H1yGhVnHHH4",
-            authDomain: "location-72fca.firebaseapp.com",
-            databaseURL: "https://location-72fca.firebaseio.com",
-            projectId: "location-72fca",
-            storageBucket: "location-72fca.appspot.com",
-            messagingSenderId: "440309375391"
+        // var config = {
+        //     apiKey: "AIzaSyDxqDaTcAUR3R6fZwI7PSz5H1yGhVnHHH4",
+        //     authDomain: "location-72fca.firebaseapp.com",
+        //     databaseURL: "https://location-72fca.firebaseio.com",
+        //     projectId: "location-72fca",
+        //     storageBucket: "location-72fca.appspot.com",
+        //     messagingSenderId: "440309375391"
+        // };
+
+        let firebaseConfig = {
+            apiKey: "AIzaSyAe5753q7Z2j0PlqP3cGsWgkVOF0Gd0FaI",
+            authDomain: "ref7-899d9.firebaseapp.com",
+            databaseURL: "https://ref7-899d9.firebaseio.com",
+            projectId: "ref7-899d9",
+            storageBucket: "ref7-899d9.appspot.com",
+            messagingSenderId: "138632426234",
+            appId: "1:138632426234:web:46d3db52e135f742"
         };
 
-        firebase.initializeApp(config);
+        firebase.initializeApp(firebaseConfig);
 
         global.firebase = firebase
         global.setAppReady = () => {
