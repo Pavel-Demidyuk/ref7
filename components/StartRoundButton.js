@@ -1,14 +1,14 @@
 import React from 'react';
-import { LinearGradient } from 'expo';
+import {LinearGradient} from 'expo-linear-gradient';
 import Ripple from 'react-native-material-ripple';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 const
     START_TEXT = 'START',
     STOP_TEXT = 'STOP';
 
-export default class StartButton extends React.Component {
+export default class StartRoundButton extends React.Component {
 
     constructor(props) {
         super(props)

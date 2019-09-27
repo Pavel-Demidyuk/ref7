@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {Dimensions, LayoutAnimation, StyleSheet, Text, View,} from 'react-native';
 import * as firebase from 'firebase'
-import {BarCodeScanner, Permissions} from 'expo';
+import * as Permissions from 'expo-permissions';
+import {BarCodeScanner} from 'expo-barcode-scanner';
 
 class QrScan extends Component {
     constructor(props) {
         super(props)
         this._requestCameraPermission()
     }
+
 
     state = {
         hasCameraPermission: false,

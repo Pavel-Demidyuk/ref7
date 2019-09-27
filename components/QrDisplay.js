@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import QRCode from 'react-native-qrcode';
+import QRCode from 'react-native-qrcode-svg';
 import * as firebase from 'firebase'
-import BlockButton from './BlockButton'
+import StartTournamentButton from './StartTournamentButton'
 
 let randomString = require('random-string');
 
@@ -70,7 +70,7 @@ class QrDisplay extends React.Component {
                     </View>
                 </View>
                 <View style={{marginTop: wp('6%'), justifyContent: 'center', alignItems: 'center'}}>
-                    <BlockButton/>
+                    <StartTournamentButton/>
                 </View>
             </View>
         )

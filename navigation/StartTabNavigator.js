@@ -1,6 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import {Platform} from 'react-native';
 import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';

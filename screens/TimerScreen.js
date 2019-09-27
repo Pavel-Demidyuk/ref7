@@ -1,8 +1,8 @@
 import React from 'react';
-import {Font} from 'expo';
+import * as Font from 'expo-font';
 import { StyleSheet, Text, View } from 'react-native';
 import Loader from '../components/Loader';
-import StartButton from '../components/StartButton';
+import StartRoundButton from '../components/StartRoundButton';
 import Timer from '../components/Timer.js'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -134,7 +134,7 @@ export default class TimerScreen extends React.Component {
                       </View>
                   </View>
                   <View style={{marginTop: hp('4.3%'), justifyContent: 'center', alignItems: 'center'}}>
-                      <StartButton action={(flag) => {this.action(flag)}} />
+                      <StartRoundButton action={(flag) => {this.action(flag)}} />
                   </View>
               </View>
            );

@@ -8,8 +8,6 @@ import ResultsScreen from "../screens/ResultsScreen";
 import TestScreen from "../screens/TestScreen";
 
 
-
-
 const TimerStack = createStackNavigator({
     Timer: TimerScreen,
 });
@@ -19,9 +17,11 @@ TimerStack.navigationOptions = {
     headerMode: 'none',
     tabBarLabel: 'Timer',
     tabBarIcon: ({focused}) => (
+
+
         <TabBarIcon
             focused={focused}
-            name={Platform.OS === 'ios' ? 'ios-timer' : 'md-timer'}
+
         />
     ),
 };
@@ -44,7 +44,7 @@ ResultsStack.navigationOptions = {
 };
 
 const TestStack = createStackNavigator({
-    Test : TestScreen,
+    Test: TestScreen,
 });
 
 TestStack.navigationOptions = {
