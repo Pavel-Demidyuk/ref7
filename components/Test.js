@@ -21,12 +21,18 @@ class Test extends Component {
     }
 
     _OnPressTButton() {
-        number = 0
-        firebase.auth().onAuthStateChanged((ref7) => {
-            console.log(number);
-        })
+        // number = 0
+        // firebase.auth().onAuthStateChanged((ref7) => {
+        //     console.log(number);
+        // })
+        //
+        // number = number + 1
 
-        number = number + 1
+        firebase.database().ref('referees/aglaya').push(Expo.Constants.deviceId).then(
+            () => {
+                console.log("Done!!!")
+            }
+        )
 
     }
 
