@@ -65,9 +65,15 @@ class QrDisplay extends React.Component {
                     <View style={styles.circle}>
                         <QRCode value={this.state.pin} size={wp('39%')} bgColor='black' fgColor='white'/>
                     </View>
+
                     <View style={{marginTop: wp('20%')}}>
                         <RefereesConnected referees={this.state.sideReferees}/>
                     </View>
+
+                    <View style={{marginTop: wp('5%')}}>
+                        <Text style={{ color: 'gray' }}> ID: { this.state.pin } </Text>
+                    </View>
+                
                 </View>
                 <View style={{marginTop: wp('6%'), justifyContent: 'center', alignItems: 'center'}}>
                     <StartTournamentButton/>
