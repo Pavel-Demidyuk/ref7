@@ -3,6 +3,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import Ripple from 'react-native-material-ripple';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import styles from './../styles'
 
 const
     START_TEXT = 'START',
@@ -43,7 +44,7 @@ export default class StartRoundButton extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 <Ripple
                     onPress={() => this.onPressActionButton()}
                     rippleCentered={false}
@@ -70,11 +71,3 @@ export default class StartRoundButton extends React.Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    rippleStart: {
-        width: 125,
-        height: 35,
-        borderRadius: 25,
-    },
-});

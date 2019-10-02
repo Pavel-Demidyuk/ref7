@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 import * as firebase from 'firebase'
+import styles from './../styles'
 
 class Test extends Component {
 
@@ -49,14 +50,5 @@ class Test extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
 
 export {Test}
