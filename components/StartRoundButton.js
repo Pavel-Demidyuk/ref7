@@ -43,7 +43,7 @@ export default class StartRoundButton extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 <Ripple
                     onPress={() => this.onPressActionButton()}
                     rippleCentered={false}
@@ -70,11 +70,3 @@ export default class StartRoundButton extends React.Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    rippleStart: {
-        width: 125,
-        height: 35,
-        borderRadius: 25,
-    },
-});

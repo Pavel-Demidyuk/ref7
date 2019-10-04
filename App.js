@@ -7,6 +7,7 @@ import {Ionicons} from '@expo/vector-icons';
 import StartNavigator from './navigation/StartNavigator';
 import AppNavigator from './navigation/AppNavigator';
 import * as firebase from "firebase";
+let randomString = require('random-string');
 
 let firebaseConfig = {
     apiKey: "AIzaSyAe5753q7Z2j0PlqP3cGsWgkVOF0Gd0FaI",
@@ -18,7 +19,15 @@ let firebaseConfig = {
     appId: "1:138632426234:web:46d3db52e135f742"
 };
 
+global.pin = randomString({
+    length: 5,
+    numeric: true,
+    letters: false,
+    special: false
+})
+
 firebase.initializeApp(firebaseConfig);
+
 export default function App(props) {
 
     const [isLoadingComplete, setLoadingComplete] = useState(false);

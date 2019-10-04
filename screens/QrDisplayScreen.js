@@ -1,13 +1,42 @@
-import React from 'react';
-import {QrDisplay} from '../components/QrDisplay';
+import React, {useEffect, useState} from 'react';
+import {View} from "react-native";
+import QrCode from "../components/QrCode";
+import RefereesConnected from "../components/RefereesConnected";
+import {widthPercentageToDP as wp} from "react-native-responsive-screen";
+import StartTournamentButton from "../components/StartTournamentButton";
+import * as firebase from 'firebase'
 
-export default class QrScreen extends React.Component {
-    static navigationOptions = {
-        header: null,
-    };
+export default function QrScreen(props) {
+    const [sideReferees, setSideReferees] = useState([]);
 
-    render() {
+    useEffect(() => {
+        firebase.database().ref('referees/' + pin + '/main').set(Expo.Constants.deviceId)
+        let side = firebase.database().ref('referees/' + pin + '/side')
 
-        return (<QrDisplay></QrDisplay>)
-    }
+        side.on('child_added', newReferee => {
+            if (!newReferee || !newReferee.val()) {
+                return
+            }
+
+            setSideReferees([...sideReferees, {
+                id: sideReferees.length,
+                value: newReferee.val()
+            }])
+        })
+
+    }, [])
+
+    return (
+        <View>
+            <QrCode/>
+            <RefereesConnected sideReferees={sideReferees}/>
+            <View style={{marginTop: wp('6%'), justifyContent: 'center', alignItems: 'center'}}>
+                <StartTournamentButton/>
+            </View>
+        </View>
+    )
 }
+
+QrScreen.navigationOptions = {
+    header: null,
+};

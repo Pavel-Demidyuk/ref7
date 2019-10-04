@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import * as firebase from 'firebase';
 
 export default class StartTournamentButton extends React.Component {
 
@@ -25,7 +26,27 @@ export default class StartTournamentButton extends React.Component {
         }
     }
 
+
+    // addSideRefereeTest () {
+    //     firebase.database().ref('referees/' + pin + '/side').push(Expo.Constants.deviceId).then(
+    //         () => {
+    //             setAppReady()
+    //         }
+    //     )
+    // }
+
+
     render() {
+        //
+        // return (
+        //     <View>
+        //         <TouchableOpacity style={styles.blockButtonOutline} onPress={() => this.addSideRefereeTest()}>
+        //             <Text style={styles.titleGreen}>Add side referee</Text>
+        //         </TouchableOpacity>
+        //     </View>
+        // )
+
+
         if (this.state.fillColor == "#fff") {
             return (
                 <View>
