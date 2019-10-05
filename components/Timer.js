@@ -1,3 +1,4 @@
+import React from 'react'
 import {Text, View} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
@@ -14,3 +15,5 @@ function Timer({mil}) {
         </View>
     )
 }
+
+export {Timer}

@@ -2,8 +2,7 @@ import React from 'react';
 import * as Font from 'expo-font';
 import { StyleSheet, Text, View } from 'react-native';
 import Loader from '../components/Loader';
-import StartRoundButton from '../components/StartRoundButton';
-import {Timer} from '../components/Timer.js'
+import { Timer } from '../components/Timer.js'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Card } from '../components/Card';
 
