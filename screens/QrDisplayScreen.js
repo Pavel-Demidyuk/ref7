@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {View} from "react-native";
-import QrCode from "../components/QrCode";
+import {Text, View} from "react-native";
+import QRCode from 'react-native-qrcode-svg';
+import { Card } from '../components/Card'
+// import QrCode from "../components/QrCode";
 import RefereesConnected from "../components/RefereesConnected";
 import {widthPercentageToDP as wp} from "react-native-responsive-screen";
 import StartTournamentButton from "../components/StartTournamentButton";
@@ -28,11 +30,18 @@ export default function QrScreen(props) {
 
     return (
         <View>
-            <QrCode/>
-            <RefereesConnected sideReferees={sideReferees}/>
-            <View style={{marginTop: wp('6%'), justifyContent: 'center', alignItems: 'center'}}>
-                <StartTournamentButton/>
-            </View>
+            <Card
+                circle={()=><QRCode value={pin} size={wp('39%')} bgColor='black' fgColor='white'/>}
+                text={()=>
+                    <View>
+                        <Text style={{color: 'gray', textAlign: 'center'}}> ID: {pin} </Text>
+                        <RefereesConnected sideReferees={sideReferees}/>
+                    </View>
+                }
+
+                button="Start Tournament"
+                onPress={()=>setAppReady()}
+            />
         </View>
     )
 }
