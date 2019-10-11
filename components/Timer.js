@@ -1,19 +1,45 @@
-import React from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {Text, View} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import RefereesContext from "../contexts/Referees";
+import useInterval from "react-useinterval"
 
-function Timer({mil}) {
-    let minutes = Math.floor(mil / (60 * 1000)) || 0,
-        seconds = Math.floor((mil % (60 * 1000)) / 1000) || 0
+export default function Timer() {
+    const refereesContext = useContext(RefereesContext)
+    let [timeDiff, setTimeDiff] = useState({minutes: 0, seconds: 0, ms: 0});
+
+
+    useEffect(() => {
+    })
+
+    const getStartDate = () => {
+        // return refereesContext.main.startTime // @TODO implement it
+        return new Date()
+    }
+
+    const increaseTime = (startDate) => {
+        let diff = (new Date() - startDate) / 1000
+        setTimeDiff({
+            minutes: Math.floor(diff / 60),
+            seconds: Math.floor(diff),
+            ms: 0,
+        });
+    }
+
+
+    if (!refereesContext.timerStarted) { // @todo reverse the logic
+        useInterval(increaseTime, 1000, getStartDate());
+    }
+
     return (
         <View>
             <Text style={{
-                fontFamily: 'roboto-mono',
+                // fontFamily: 'roboto-mono',
                 fontSize: wp('12%'),
                 color: "#000"
-            }}>{minutes >= 10 ? minutes : "0" + minutes}:{seconds >= 10 ? seconds : "0" + seconds}</Text>
+            }}>
+                {timeDiff.minutes} : {timeDiff.seconds} : {timeDiff.ms}
+            </Text>
         </View>
     )
 }
-
-export {Timer}

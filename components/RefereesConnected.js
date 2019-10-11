@@ -1,15 +1,14 @@
 import {Text, View} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
+import RefereesContext from "../contexts/Referees"
 
 
-export default function ReferessConnected(props) {
-    console.log(props.sideReferees)
+export default function ReferessConnected() {
 
+    const refereesContext = useContext(RefereesContext)
     return (
         <View>
-            <Text>List of connected side refs</Text>
-            {props.sideReferees.map((referee, index) => {
-                return <Text key={referee.id}>****{referee.value} ***</Text>
-            })}</View>
+            <Text>Referees connected: {refereesContext.sideReferees.length}</Text>
+        </View>
     );
 }
