@@ -28,8 +28,13 @@ class QrScan extends Component {
     };
 
     _registerReferee(pin) {
-        firebase.database().ref('referees/' + pin + '/side').push(Expo.Constants.deviceId).then(
+        firebase.database().ref('referees/' + pin + '/side/' + Expo.Constants.deviceId).push({
+            id: Expo.Constants.deviceId,
+            start: null,
+            stop: null
+        }).then(
             () => {
+
                 setAppReady()
             }
         )

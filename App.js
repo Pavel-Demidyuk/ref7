@@ -1,12 +1,14 @@
 import {AppLoading} from 'expo';
 import {Asset} from 'expo-asset';
 import * as Font from 'expo-font';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import StartNavigator from './navigation/StartNavigator';
 import AppNavigator from './navigation/AppNavigator';
 import * as firebase from "firebase";
+import RefereesContext from "./contexts/Referees"
+
 let randomString = require('random-string');
 
 let firebaseConfig = {
@@ -26,9 +28,83 @@ global.pin = randomString({
     special: false
 })
 
+console.log(" ----> PIN: " + global.pin + " <----")
+
 firebase.initializeApp(firebaseConfig);
 
+
 export default function App(props) {
+    const [sideReferees, setSideReferees] = useState([])
+    const [timerStarted, startTimer] = useState(false)
+
+    useEffect(() => {
+
+        // ### Firebase ###
+
+        global.firebaseDb = firebase.database().ref
+
+        registerMainReferee(Expo.Constants.deviceId)
+        listenSideRefereesAdded()
+
+
+    }, [])
+
+    const listenSideRefereesAdded = () => {
+        // listen for connected side referees
+        let side = firebaseDb('referees/' + pin + '/side')
+        side.on('child_added', newReferee => {
+            if (!newReferee || !newReferee.val()) {
+                return
+            }
+            registerSideReferee(newReferee.key)
+            setSideReferees(sideReferees => [...sideReferees, {
+                id: newReferee.key,
+                params: newReferee.val()
+            }])
+
+        })
+    }
+
+    const registerMainReferee = (refereeId) => {
+        firebaseDb('referees/' + pin + '/main/' + Expo.Constants.deviceId).set({
+            id: Expo.Constants.deviceId,
+            start: null,
+            stop: null
+        })
+
+
+        firebaseDb('referees/' + pin + '/main/' + refereeId + '/start').on('value', value => {
+            if (value > 0) {
+                // Side Referee started the timer!
+                console.log("Main Referee started the timer")
+                startTimer(true)
+            }
+        })
+
+        firebaseDb('referees/' + pin + '/main/' + refereeId + '/stop').on('value', value => {
+            if (value > 0) {
+                // Side Referee stopped the timer!
+                console.log("Main Referee stopped the timer")
+                startTimer(false)
+            }
+        })
+    }
+
+    const registerSideReferee = (refereeId) => {
+        firebaseDb('referees/' + pin + '/side/' + refereeId + '/start').on('value', value => {
+            if (value > 0) {
+                // Side Referee started the timer!
+                console.log("Side Referee started the timer")
+            }
+        })
+
+        firebaseDb('referees/' + pin + '/side/' + refereeId + '/stop').on('value', value => {
+            if (value > 0) {
+                // Side Referee stopped the timer!
+                console.log("Side Referee stopped the timer")
+            }
+        })
+    }
 
     const [isLoadingComplete, setLoadingComplete] = useState(false);
     const [ready, setReady] = useState(false);
@@ -42,20 +118,25 @@ export default function App(props) {
             />
         );
     } else {
-        global.firebase = firebase
         global.setAppReady = () => {
             setReady(true)
         }
 
         return (
-            <View style={styles.container}>
-                {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
-                {
-                    ready ? (<AppNavigator/>) : (<StartNavigator/>)
-                }
+            <RefereesContext.Provider value={{
+                sideReferees: sideReferees,
+                timerStarted: timerStarted
+            }}>
+                <View style={styles.container}>
+                    {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
+                    {
+                        ready ?
+                            <AppNavigator/> :
+                            <StartNavigator/>
+                    }
+                </View>
 
-
-            </View>
+            </RefereesContext.Provider>
         );
     }
 }
