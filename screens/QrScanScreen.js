@@ -50,7 +50,8 @@ export default class QrScan extends Component {
                             Camera permission is not granted
                         </Text>
                         : <BarCodeScanner
-                            onBarCodeRead={(result) => {
+                            onBarCodeScanned={(result) => {
+                                console.log(123123)
                                 this._handleBarCodeRead(result)
                             }}
                             style={{
