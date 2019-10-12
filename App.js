@@ -31,6 +31,7 @@ global.pin = randomString({
 console.log(" ----> PIN: " + global.pin + " <----")
 
 firebase.initializeApp(firebaseConfig);
+global.firebaseDb = (ref) => firebase.database().ref(ref)
 
 
 export default function App(props) {
@@ -41,7 +42,7 @@ export default function App(props) {
 
         // ### Firebase ###
 
-        global.firebaseDb = firebase.database().ref
+
 
         registerMainReferee(Expo.Constants.deviceId)
         listenSideRefereesAdded()
