@@ -28,7 +28,7 @@ global.pin = randomString({
     special: false
 })
 
-console.log(" ----> PIN: "+ global.pin+" <----")
+console.log(" ----> PIN: " + global.pin + " <----")
 
 firebase.initializeApp(firebaseConfig);
 
@@ -40,7 +40,9 @@ export default function App(props) {
     useEffect(() => {
 
         // ### Firebase ###
-        global.firebaseDb = (ref) => firebase.database().ref(ref)
+
+        global.firebaseDb = firebase.database().ref
+
         registerMainReferee(Expo.Constants.deviceId)
         listenSideRefereesAdded()
 
@@ -123,13 +125,17 @@ export default function App(props) {
         return (
             <RefereesContext.Provider value={{
                 sideReferees: sideReferees,
-                timerStarted: timerStarted}}>
+                timerStarted: timerStarted
+            }}>
                 <View style={styles.container}>
                     {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
                     {
-                        ready ? (<AppNavigator/>) : (<StartNavigator/>)
+                        ready ?
+                            <AppNavigator/> :
+                            <StartNavigator/>
                     }
                 </View>
+
             </RefereesContext.Provider>
         );
     }
