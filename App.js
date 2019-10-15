@@ -6,32 +6,25 @@ import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import StartNavigator from './navigation/StartNavigator';
 import AppNavigator from './navigation/AppNavigator';
-import * as firebase from "firebase";
 import RefereesContext from "./contexts/Referees"
+import * as backend from './backend'
+
 
 let randomString = require('random-string');
 
-let firebaseConfig = {
-    apiKey: "AIzaSyAe5753q7Z2j0PlqP3cGsWgkVOF0Gd0FaI",
-    authDomain: "ref7-899d9.firebaseapp.com",
-    databaseURL: "https://ref7-899d9.firebaseio.com",
-    projectId: "ref7-899d9",
-    storageBucket: "ref7-899d9.appspot.com",
-    messagingSenderId: "138632426234",
-    appId: "1:138632426234:web:46d3db52e135f742"
-};
 
-global.pin = randomString({
+global.pin = "examp"; 
+randomString({
     length: 5,
     numeric: true,
     letters: false,
     special: false
 })
 
+
 console.log(" ----> PIN: " + global.pin + " <----")
 
-firebase.initializeApp(firebaseConfig);
-global.firebaseDb = (ref) => firebase.database().ref(ref)
+// global.firebaseDb = (ref) => firebase.database().ref(ref)
 
 
 export default function App(props) {
@@ -43,9 +36,9 @@ export default function App(props) {
         // ### Firebase ###
 
 
-
-        registerMainReferee(Expo.Constants.deviceId)
-        listenSideRefereesAdded()
+        backend.connectTo('examp', true)
+        // registerMainReferee(Expo.Constants.deviceId)
+        // listenSideRefereesAdded()
 
 
     }, [])
