@@ -111,14 +111,15 @@ export default function App(props) {
     const [isLoadingComplete, setLoadingComplete] = useState(false);
     const [ready, setReady] = useState(false);
 
+    global.setAppReady = () => {
+        setReady(true)
+    }
+
     if (!isLoadingComplete && !props.skipLoadingScreen) {
         return (
             <Load_all_files/>
         );
     } else {
-        global.setAppReady = () => {
-            setReady(true)
-        }
 
         return (
             <RefereesContext.Provider value={{
