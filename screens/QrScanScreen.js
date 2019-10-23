@@ -4,6 +4,7 @@ import * as firebase from 'firebase'
 import * as Permissions from 'expo-permissions';
 import {BarCodeScanner} from 'expo-barcode-scanner';
 import styles from './../styles'
+import { connectTo } from './../db/init'
 
 export default class QrScan extends Component {
     static navigationOptions = {
@@ -28,8 +29,10 @@ export default class QrScan extends Component {
     };
 
     _handleBarCodeRead = result => {
+        console.log(result)
         LayoutAnimation.spring()
-        this._registerReferee(result.data)
+        connectTo(result.data)
+        setAppReady()
     };
 
     _registerReferee(pin) {

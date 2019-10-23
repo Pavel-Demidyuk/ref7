@@ -6,32 +6,25 @@ import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import StartNavigator from './navigation/StartNavigator';
 import AppNavigator from './navigation/AppNavigator';
-import * as firebase from "firebase";
 import RefereesContext from "./contexts/Referees"
+import { getCompetion } from './db/init'
+
 
 let randomString = require('random-string');
 
-let firebaseConfig = {
-    apiKey: "AIzaSyAe5753q7Z2j0PlqP3cGsWgkVOF0Gd0FaI",
-    authDomain: "ref7-899d9.firebaseapp.com",
-    databaseURL: "https://ref7-899d9.firebaseio.com",
-    projectId: "ref7-899d9",
-    storageBucket: "ref7-899d9.appspot.com",
-    messagingSenderId: "138632426234",
-    appId: "1:138632426234:web:46d3db52e135f742"
-};
 
-global.pin = randomString({
+global.pin = "examp"; 
+randomString({
     length: 5,
     numeric: true,
     letters: false,
     special: false
 })
 
+
 console.log(" ----> PIN: " + global.pin + " <----")
 
-firebase.initializeApp(firebaseConfig);
-global.firebaseDb = (ref) => firebase.database().ref(ref)
+// global.firebaseDb = (ref) => firebase.database().ref(ref)
 
 
 export default function App(props) {
@@ -43,53 +36,13 @@ export default function App(props) {
         // ### Firebase ###
 
 
-
-        registerMainReferee(Expo.Constants.deviceId)
-        listenSideRefereesAdded()
+        getCompetion('examp', true)
+        // registerMainReferee(Expo.Constants.deviceId)
+        // listenSideRefereesAdded()
 
 
     }, [])
 
-    const listenSideRefereesAdded = () => {
-        // listen for connected side referees
-        let side = firebaseDb('referees/' + pin + '/side')
-        side.on('child_added', newReferee => {
-            if (!newReferee || !newReferee.val()) {
-                return
-            }
-            registerSideReferee(newReferee.key)
-            setSideReferees(sideReferees => [...sideReferees, {
-                id: newReferee.key,
-                params: newReferee.val()
-            }])
-
-        })
-    }
-
-    const registerMainReferee = (refereeId) => {
-        firebaseDb('referees/' + pin + '/main/' + Expo.Constants.deviceId).set({
-            id: Expo.Constants.deviceId,
-            start: null,
-            stop: null
-        })
-
-
-        firebaseDb('referees/' + pin + '/main/' + refereeId + '/start').on('value', value => {
-            if (value > 0) {
-                // Side Referee started the timer!
-                console.log("Main Referee started the timer")
-                startTimer(true)
-            }
-        })
-
-        firebaseDb('referees/' + pin + '/main/' + refereeId + '/stop').on('value', value => {
-            if (value > 0) {
-                // Side Referee stopped the timer!
-                console.log("Main Referee stopped the timer")
-                startTimer(false)
-            }
-        })
-    }
 
     const registerSideReferee = (refereeId) => {
         firebaseDb('referees/' + pin + '/side/' + refereeId + '/start').on('value', value => {

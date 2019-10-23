@@ -1,24 +1,23 @@
-import React, {useContext} from 'react';
-import Timer from '../components/Timer.js'
-import {Card} from '../components/Card';
-import ReferessConnected from "../components/RefereesConnected";
-import RefereesContext from "../contexts/Referees";
+import React, { useState } from 'react';
+import Timer from '../components/Timer.js';
+import { Card } from '../components/Card';
+import ReferessConnected from '../components/RefereesConnected';
+import { useTimer } from './../db/timer';
 
 export default function TimerScreen() {
-    const refereesConnectedContext = useContext(RefereesContext)
-    return (
-        <Card
-            circle={() => <Timer/>}
-            text={() =>
-                <ReferessConnected/>
-            }
-            button={!refereesConnectedContext.timerStarted ? "Start" : "Stop"}
-            onPress={() => this.toggle()}
-            // color={circleBorder}
-        />
-    )
+  const [running, toggle] = useTimer();
+
+  return (
+    <Card
+      circle={() => <Timer />}
+      text={() => <ReferessConnected />}
+      button={running ? 'Stop' : 'Start'}
+      onPress={() => toggle()}
+      color={running ? "#ff0000" : "#2ECC71"}
+    />
+  );
 }
 
 TimerScreen.navigationOptions = {
-    header: null,
+  header: null
 };
