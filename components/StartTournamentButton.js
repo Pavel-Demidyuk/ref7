@@ -1,31 +1,29 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import * as firebase from 'firebase';
 
 export default class StartTournamentButton extends React.Component {
-
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
-            fillColor: "#fff",
-        }
+            fillColor: '#fff'
+        };
     }
 
     onPressStartTournamentButton() {
-        setAppReady()
-        if (this.state.fillColor == "#fff") {
+        setAppReady();
+        if (this.state.fillColor == '#fff') {
             this.setState({
-                fillColor: '#2DCB73',
-            })
+                fillColor: '#2DCB73'
+            });
         } else {
             this.setState({
-                fillColor: '#fff',
-            })
+                fillColor: '#fff'
+            });
         }
     }
-
 
     // addSideRefereeTest () {
     //     firebase.database().ref('referees/' + pin + '/side').push(Expo.Constants.deviceId).then(
@@ -34,7 +32,6 @@ export default class StartTournamentButton extends React.Component {
     //         }
     //     )
     // }
-
 
     render() {
         //
@@ -46,11 +43,13 @@ export default class StartTournamentButton extends React.Component {
         //     </View>
         // )
 
-
-        if (this.state.fillColor == "#fff") {
+        if (this.state.fillColor == '#fff') {
             return (
                 <View>
-                    <TouchableOpacity style={styles.blockButtonOutline} onPress={() => this.onPressStartTournamentButton()}>
+                    <TouchableOpacity
+                        style={styles.blockButtonOutline}
+                        onPress={() => this.onPressStartTournamentButton()}
+                    >
                         <Text style={styles.titleGreen}>START TOURNAMENT</Text>
                     </TouchableOpacity>
                 </View>
@@ -58,7 +57,10 @@ export default class StartTournamentButton extends React.Component {
         } else {
             return (
                 <View>
-                    <TouchableOpacity style={styles.blockButtonPressed} onPress={() => this.onPressStartTournamentButton()}>
+                    <TouchableOpacity
+                        style={styles.blockButtonPressed}
+                        onPress={() => this.onPressStartTournamentButton()}
+                    >
                         <Text style={styles.titleWhite}>START TOURNAMENT</Text>
                     </TouchableOpacity>
                 </View>
@@ -78,11 +80,11 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 2,
         borderColor: '#2DCB73',
-        shadowColor: "#2DCB73",
-        shadowOffset: {width: 3, height: 3},
+        shadowColor: '#2DCB73',
+        shadowOffset: { width: 3, height: 3 },
         shadowOpacity: 0.62,
         shadowRadius: 2.22,
-        elevation: 5,
+        elevation: 5
     },
 
     blockButtonPressed: {
@@ -95,11 +97,11 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 2,
         borderColor: '#2DCB73',
-        shadowColor: "#2DCB73",
-        shadowOffset: {width: 3, height: 3},
+        shadowColor: '#2DCB73',
+        shadowOffset: { width: 3, height: 3 },
         shadowOpacity: 0.62,
         shadowRadius: 2.22,
-        elevation: 5,
+        elevation: 5
     },
 
     titleGreen: {

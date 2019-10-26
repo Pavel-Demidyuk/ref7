@@ -2,22 +2,20 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Bars } from 'react-native-loader';
 import * as Font from 'expo-font';
-import { Card } from './../components/Card'
+import { Card } from './../components/Card';
 
 export default class Results extends React.Component {
-
     static navigationOptions = {
         header: null,
-        headerMode: 'none',
-
-    }
+        headerMode: 'none'
+    };
 
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             fontLoaded: false
-        }
+        };
     }
 
     async componentDidMount() {
@@ -27,15 +25,15 @@ export default class Results extends React.Component {
 
         this.setState({
             fontLoaded: true
-        })
+        });
     }
 
     render() {
         if (this.state.fontLoaded) {
             return (
                 <Card
-                    circle={()=><Text>Progress</Text>}
-                    text={()=><Text>Progress</Text>}
+                    circle={() => <Text>Progress</Text>}
+                    text={() => <Text>Progress</Text>}
                     button="Progress"
                 />
                 // <LinearGradient
@@ -67,7 +65,14 @@ export default class Results extends React.Component {
             );
         } else {
             return (
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
+                <View
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        textAlign: 'center'
+                    }}
+                >
                     <Bars size={20} color="#000" />
                 </View>
             );
@@ -75,5 +80,5 @@ export default class Results extends React.Component {
     }
 }
 
-const colorSuccess = ["#2ECC71", "#1ABC9C"];
-const colorFailure = ["#E74C3C", "#B53471"];
+const colorSuccess = ['#2ECC71', '#1ABC9C'];
+const colorFailure = ['#E74C3C', '#B53471'];

@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
-import {Button, StyleSheet, View} from 'react-native';
-import * as firebase from 'firebase'
+import React, { Component } from 'react';
+import { Button, StyleSheet, View } from 'react-native';
+import * as firebase from 'firebase';
 
 class Test extends Component {
-
     constructor(props) {
-        super(props)
+        super(props);
 
         //
         // var firebaseConfig = {
@@ -17,7 +16,6 @@ class Test extends Component {
         //     messagingSenderId: "1074115890260",
         //     appId: "1:1074115890260:web:62fc7c4f2ac7dbdd"
         // };
-
     }
 
     _OnPressTButton() {
@@ -28,17 +26,16 @@ class Test extends Component {
         //
         // number = number + 1
 
-        firebase.database().ref('referees/aglaya').push(Expo.Constants.deviceId).then(
-            () => {
-                console.log("Done!!!")
-            }
-        )
-
+        firebase
+            .database()
+            .ref('referees/aglaya')
+            .push(Expo.Constants.deviceId)
+            .then(() => {
+                console.log('Done!!!');
+            });
     }
 
-
     render() {
-
         return (
             <View style={styles.container}>
                 <Button
@@ -46,7 +43,7 @@ class Test extends Component {
                     title="It is a test Button. Press it"
                 />
             </View>
-        )
+        );
     }
 }
 
@@ -55,8 +52,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
-    },
+        justifyContent: 'center'
+    }
 });
 
-export {Test}
+export { Test };
