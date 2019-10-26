@@ -12,14 +12,16 @@ import { getCompetion } from './db/init'
 
 let randomString = require('random-string');
 
+global.isDevelopment = process.env.NODE_ENV == 'development'
 
-global.pin = "examp"; 
-randomString({
-    length: 5,
-    numeric: true,
-    letters: false,
-    special: false
-})
+global.pin = isDevelopment
+  ? 'dev'
+  : randomString({
+      length: 5,
+      numeric: true,
+      letters: false,
+      special: false
+    });
 
 
 console.log(" ----> PIN: " + global.pin + " <----")
@@ -36,7 +38,7 @@ export default function App(props) {
         // ### Firebase ###
 
 
-        getCompetion('examp', true)
+        getCompetion(pin, true)
         // registerMainReferee(Expo.Constants.deviceId)
         // listenSideRefereesAdded()
 
