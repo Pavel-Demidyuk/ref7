@@ -1,6 +1,5 @@
-import React, {createContext} from "react";
+import React, { createContext } from 'react';
 
-const RefereeContext = createContext("foo-bar");
+const RefereeContext = createContext('foo-bar');
 
 export default RefereeContext;
-

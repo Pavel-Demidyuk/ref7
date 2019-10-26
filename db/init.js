@@ -1,9 +1,9 @@
 import * as firebase from 'firebase';
-import Config from './config.js'
-import { createReferee } from './ref'
+import Config from './config.js';
+import { createReferee } from './ref';
 
 firebase.initializeApp(Config);
-let db = firebase.database(db)
+let db = firebase.database(db);
 /**
  * Connect to competition
  * @param {number} pin pin of competition
@@ -18,5 +18,5 @@ function getCompetion(pin, isMain = false) {
 
   global.connection = ref;
 }
-                     
-export { getCompetion }
+
+export { getCompetion };

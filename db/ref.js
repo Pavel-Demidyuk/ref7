@@ -1,4 +1,4 @@
-import Constants from 'expo-constants'
+import Constants from 'expo-constants';
 
 /**
  * Connect ref
@@ -13,4 +13,4 @@ function createReferee(ref, isMain) {
   });
 }
 
-export { createReferee }
+export { createReferee };

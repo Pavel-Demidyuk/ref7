@@ -13,7 +13,7 @@ export default function TimerScreen() {
       text={() => <ReferessConnected />}
       button={running ? 'Stop' : 'Start'}
       onPress={() => toggle()}
-      color={running ? "#ff0000" : "#2ECC71"}
+      color={running ? '#ff0000' : '#2ECC71'}
     />
   );
 }
