@@ -7,28 +7,34 @@ import QrScanScreen from '../screens/QrScanScreen';
 import QrDisplayScreen from '../screens/QrDisplayScreen';
 
 const QrScanStack = createStackNavigator({
-  Qr: QrScanScreen
+    Qr: QrScanScreen
 });
 
 QrScanStack.navigationOptions = {
-  tabBarLabel: 'Scan QR code',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-qr-scanner' : 'md-qr-scanner'} />
-  )
+    tabBarLabel: 'Scan QR code',
+    tabBarIcon: ({ focused }) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'ios-qr-scanner' : 'md-qr-scanner'}
+        />
+    )
 };
 
 const QrDisplayStack = createStackNavigator({
-  Qr: QrDisplayScreen
+    Qr: QrDisplayScreen
 });
 
 QrDisplayStack.navigationOptions = {
-  tabBarLabel: 'Generate QR code',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-barcode' : 'md-barcode'} />
-  )
+    tabBarLabel: 'Generate QR code',
+    tabBarIcon: ({ focused }) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'ios-barcode' : 'md-barcode'}
+        />
+    )
 };
 
 export default createBottomTabNavigator({
-  QrScanStack,
-  QrDisplayStack
+    QrScanStack,
+    QrDisplayStack
 });

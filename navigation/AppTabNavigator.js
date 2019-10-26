@@ -8,40 +8,48 @@ import ResultsScreen from '../screens/ResultsScreen';
 import TestScreen from '../screens/TestScreen';
 
 const TimerStack = createStackNavigator({
-  Timer: TimerScreen
+    Timer: TimerScreen
 });
 
 TimerStack.navigationOptions = {
-  header: null,
-  headerMode: 'none',
-  tabBarLabel: 'Timer',
-  tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} />
+    header: null,
+    headerMode: 'none',
+    tabBarLabel: 'Timer',
+    tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} />
 };
 
 const ResultsStack = createStackNavigator({
-  Result: ResultsScreen
+    Result: ResultsScreen
 });
 
 ResultsStack.navigationOptions = {
-  header: null,
-  headerMode: 'none',
-  tabBarLabel: 'Results',
-  tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-list' : 'md-list'} />
+    header: null,
+    headerMode: 'none',
+    tabBarLabel: 'Results',
+    tabBarIcon: ({ focused }) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'ios-list' : 'md-list'}
+        />
+    )
 };
 
 const TestStack = createStackNavigator({
-  Test: TestScreen
+    Test: TestScreen
 });
 
 TestStack.navigationOptions = {
-  tabBarLabel: 'Test',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  )
+    tabBarLabel: 'Test',
+    tabBarIcon: ({ focused }) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+        />
+    )
 };
 
 export default createBottomTabNavigator({
-  TimerStack,
-  ResultsStack,
-  TestStack
+    TimerStack,
+    ResultsStack,
+    TestStack
 });
