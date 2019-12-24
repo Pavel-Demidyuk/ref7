@@ -7,7 +7,8 @@ import { useEffect, useState } from 'react';
  */
 function addResults(time, createdAt) {
     global.connection.child('/results').push({
-        createdAt, time
+        createdAt,
+        time
     });
 }
 
@@ -19,12 +20,11 @@ function addResults(time, createdAt) {
 function useResults() {
     const [results, setResults] = useState([]);
     useEffect(() => {
-        
         let h = e => {
-            e = e.val()
-            e = Object.values(e ? e : {})
-            e = e.sort((a,b)=>a.createdAt-b.createdAt)
-            setResults(e)
+            e = e.val();
+            e = Object.values(e ? e : {});
+            e = e.sort((a, b) => a.createdAt - b.createdAt);
+            setResults(e);
         };
 
         global.connection.child('results/').on('value', h);

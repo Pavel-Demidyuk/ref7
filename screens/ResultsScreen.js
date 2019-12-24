@@ -9,7 +9,7 @@ import { Table, Rows } from 'react-native-table-component';
 
 export default function ResultsScreen() {
     const [time] = useAvgTime();
-    const [results] = useResults()
+    const [results] = useResults();
 
     return (
         <Card
@@ -29,7 +29,9 @@ export default function ResultsScreen() {
                         borderStyle={{ borderWidth: 0, borderColor: '#fff' }}
                         style={{ width: 160 }}
                     >
-                        <Rows data={results.map((e, i)=>[i+1, timeToString(e.time)])}/>
+                        <Rows
+                            data={results.map((e, i) => [i + 1, timeToString(e.time)])}
+                        />
                     </Table>
                 </View>
             )}

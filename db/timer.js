@@ -46,7 +46,7 @@ function useAvgTime() {
         let h = e => {
             e = e.val();
             e = Object.values(e).map(e => e.delta);
-            setTime(e.reduce((a,b)=>a+b, 0) / e.length)
+            setTime(e.reduce((a, b) => a + b, 0) / e.length);
         };
         global.connection.child('ref/').on('value', h);
         return () => global.connection.child('ref/').off('value', h);
