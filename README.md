@@ -1,3 +1,3 @@
-# Ref7
+# Ref7 - Timer from 2777 a. d.
 
-Hello world
+Welcome to README of our very intresting application for judjung on robototecnic competitions 
