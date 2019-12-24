@@ -19,11 +19,13 @@ export default function QrScreen() {
                 )}
                 text={() => (
                     <View>
-                        <Text style={{ color: 'gray', textAlign: 'center' }}>
+                        <RefereesConnected />
+                        <Text
+                            style={{ color: 'gray', textAlign: 'center', marginTop: 16 }}
+                        >
                             {' '}
                             ID: {pin}{' '}
                         </Text>
-                        <RefereesConnected />
                     </View>
                 )}
                 button="Start Tournament"

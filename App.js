@@ -1,13 +1,15 @@
 import {AppLoading} from 'expo';
 import {Asset} from 'expo-asset';
 import * as Font from 'expo-font';
+import Constants from 'expo-constants';
 import React, {useEffect, useState} from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import StartNavigator from './navigation/StartNavigator';
 import AppNavigator from './navigation/AppNavigator';
 import RefereesContext from "./contexts/Referees"
-import { getCompetion } from './db/init'
+import { connectToCompetion } from './db/init'
+import { extractID } from './helpers'
 
 
 let randomString = require('random-string');
@@ -15,7 +17,7 @@ let randomString = require('random-string');
 global.isDevelopment = process.env.NODE_ENV == 'development'
 
 global.pin = isDevelopment
-  ? 'dev'
+  ? ('dev-' + extractID(Constants.deviceId))
   : randomString({
       length: 5,
       numeric: true,
@@ -26,41 +28,15 @@ global.pin = isDevelopment
 
 console.log(" ----> PIN: " + global.pin + " <----")
 
-// global.firebaseDb = (ref) => firebase.database().ref(ref)
-
-
 export default function App(props) {
     const [sideReferees, setSideReferees] = useState([])
     const [timerStarted, startTimer] = useState(false)
 
     useEffect(() => {
-
-        // ### Firebase ###
-
-
-        getCompetion(pin, true)
+        connectToCompetion(pin, true)
         // registerMainReferee(Expo.Constants.deviceId)
         // listenSideRefereesAdded()
-
-
     }, [])
-
-
-    const registerSideReferee = (refereeId) => {
-        firebaseDb('referees/' + pin + '/side/' + refereeId + '/start').on('value', value => {
-            if (value > 0) {
-                // Side Referee started the timer!
-                console.log("Side Referee started the timer")
-            }
-        })
-
-        firebaseDb('referees/' + pin + '/side/' + refereeId + '/stop').on('value', value => {
-            if (value > 0) {
-                // Side Referee stopped the timer!
-                console.log("Side Referee stopped the timer")
-            }
-        })
-    }
 
     const [isLoadingComplete, setLoadingComplete] = useState(false);
     const [ready, setReady] = useState(false);

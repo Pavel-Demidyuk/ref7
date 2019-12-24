@@ -67,7 +67,7 @@ function Card({ circle, text, button, onPress, color = '#2DCB73' }) {
         <View style={styles.container}>
             <View style={styles.card}>
                 <View style={{ ...styles.circle, borderColor: color }}>{circle()}</View>
-                <View style={{ marginTop: wp('20%') }}>{text()}</View>
+                <View style={{ marginTop: 32 }}>{text()}</View>
             </View>
             <View style={styles.buttonPos}>
                 <TouchableOpacity
