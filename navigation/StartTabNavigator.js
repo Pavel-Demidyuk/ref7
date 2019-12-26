@@ -5,6 +5,7 @@ import { createBottomTabNavigator, createStackNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import QrScanScreen from '../screens/QrScanScreen';
 import QrDisplayScreen from '../screens/QrDisplayScreen';
+import InfoScreen from '../screens/InfoScreen';
 
 const QrScanStack = createStackNavigator({
     Qr: QrScanScreen
@@ -34,7 +35,22 @@ QrDisplayStack.navigationOptions = {
     )
 };
 
+const InfoStack = createStackNavigator({
+    Info: InfoScreen
+});
+
+InfoStack.navigationOptions = {
+    tabBarLabel: 'Information',
+    tabBarIcon: ({ focused }) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? 'ios-information' : 'md-information-circle'}
+        />
+    )
+};
+
 export default createBottomTabNavigator({
     QrScanStack,
-    QrDisplayStack
+    QrDisplayStack,
+    InfoStack
 });

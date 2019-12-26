@@ -74,10 +74,12 @@ export default function App(props) {
 }
 
 async function loadResourcesAsync() {
-    await Promise.all([
+    global.assets = await Promise.all([
         Asset.loadAsync([
             require('./assets/images/robot-dev.png'),
             require('./assets/images/robot-prod.png'),
+            require('./README.md'),
+            require('./AUTHORS.md')
         ]),
         Font.loadAsync({
             // This is the font that we are using for our tab bar
@@ -86,7 +88,7 @@ async function loadResourcesAsync() {
             // remove this if you are not using it in your app
             'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
         }),
-    ]);
+    ])[0];
 }
 
 function handleLoadingError(error) {
