@@ -5,7 +5,7 @@ import { useAvgTime } from '../db/timer';
 import { timeToString } from '../helpers';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { addResults, useResults } from '../db/results';
-import { Table, Rows } from 'react-native-table-component';
+import { Table, TableWrapper, Cell } from 'react-native-table-component';
 
 export default function ResultsScreen() {
     const [time] = useAvgTime();
@@ -13,10 +13,11 @@ export default function ResultsScreen() {
 
     return (
         <Card
-            circle={() => (
+            circle={circleSize => (
                 <Text
                     style={{
-                        fontSize: wp('12%'),
+                        fontSize: circleSize / 8,
+                        fontFamily: 'timer',
                         color: '#000'
                     }}
                 >
@@ -26,17 +27,42 @@ export default function ResultsScreen() {
             text={() => (
                 <View>
                     <Table
-                        borderStyle={{ borderWidth: 0, borderColor: '#fff' }}
+                        borderStyle={{
+                            borderWidth: 0
+                        }}
                         style={{ width: 160 }}
                     >
-                        <Rows
-                            data={results.map((e, i) => [i + 1, timeToString(e.time)])}
-                        />
+                        {results.map((e, i) => (
+                            <TableWrapper
+                                style={{ flexDirection: 'row', backgroundColor: '#fff' }}
+                                key={i}
+                            >
+                                <Cell
+                                    data={i + 1}
+                                    textStyle={{ margin: 0, color: '#000' }}
+                                />
+                                <Cell
+                                    data={timeToString(e.time)}
+                                    textStyle={{
+                                        margin: 0,
+                                        color: '#444',
+                                        fontFamily: 'timer'
+                                    }}
+                                    style={{ width: 100 }}
+                                />
+                            </TableWrapper>
+                        ))}
                     </Table>
                 </View>
             )}
             button="Save Result"
+            btnRound={10}
             onPress={() => addResults(time, +new Date())}
+            id={() => (
+                <Text style={{ color: 'gray', textAlign: 'center', marginTop: 16 }}>
+                    Competition ID: {pin}{' '}
+                </Text>
+            )}
         />
     );
 }

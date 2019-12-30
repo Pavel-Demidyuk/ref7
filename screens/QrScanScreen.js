@@ -4,6 +4,7 @@ import * as Permissions from 'expo-permissions';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import styles from './../styles';
 import { connectToCompetion } from './../db/init';
+import { Card } from '../components/Card';
 
 export default class QrScan extends Component {
     static navigationOptions = {
@@ -34,7 +35,7 @@ export default class QrScan extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={{ ...styles.container, backgroundColor: 'black' }}>
                 {this.state.hasCameraPermission === null ? (
                     <Text>Waiting for permissions..</Text>
                 ) : this.state.hasCameraPermission === false ? (
@@ -47,8 +48,8 @@ export default class QrScan extends Component {
                             this._handleBarCodeRead(result);
                         }}
                         style={{
-                            height: Dimensions.get('window').height,
-                            width: Dimensions.get('window').width
+                            height: '100%',
+                            width: '100%'
                         }}
                     />
                 )}

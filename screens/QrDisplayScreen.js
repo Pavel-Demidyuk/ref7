@@ -9,10 +9,10 @@ export default function QrScreen() {
     return (
         <View>
             <Card
-                circle={() => (
+                circle={circleSize => (
                     <QRCode
                         value={pin}
-                        size={wp('39%')}
+                        size={circleSize - 36}
                         bgColor="black"
                         fgColor="white"
                     />
@@ -20,16 +20,17 @@ export default function QrScreen() {
                 text={() => (
                     <View>
                         <RefereesConnected />
-                        <Text
-                            style={{ color: 'gray', textAlign: 'center', marginTop: 16 }}
-                        >
-                            {' '}
-                            ID: {pin}{' '}
-                        </Text>
                     </View>
                 )}
                 button="Start Tournament"
                 onPress={() => setAppReady()}
+                color="#000"
+                needCircleBorder={false}
+                id={() => (
+                    <Text style={{ color: 'gray', textAlign: 'center', marginTop: 16 }}>
+                        ID: {pin}{' '}
+                    </Text>
+                )}
             />
         </View>
     );

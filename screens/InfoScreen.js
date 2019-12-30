@@ -1,19 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView, StyleSheet } from 'react-native';
 import { Asset } from 'expo-asset';
 import { readAsStringAsync } from 'expo-file-system';
 import { Bars } from 'react-native-loader';
 
 import Markdown from 'react-native-markdown-renderer';
 
-const copy = `# h1 Heading 8-)
+const styles = StyleSheet.create({
+    scroll: {
+        padding: 20,
+        flexGrow: 1
+    },
+    container: {
+        flexDirection: 'column',
+        height: '100%'
+    },
+    border: {
+        width: '100%',
+        height: 8,
+        backgroundColor: '#f00',
+        borderBottomWidth: 2,
+        borderBottomColor: '#0f0'
+    },
+    version: {
+        color: 'gray',
+        width: '100%',
+        textAlign: 'center'
+    }
+});
 
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-`;
+const markdownStyles = StyleSheet.create({
+    heading: {
+        textAlign: 'center',
+        width: '100%',
+        borderTopColor: '#000',
+        marginTop: 4
+    }
+});
 
 export default function InfoScreen() {
     const [data, setData] = useState({
@@ -40,17 +63,15 @@ export default function InfoScreen() {
     }, []);
 
     return data.loaded ? (
-        <View style={{ padding: 20, textAlign: 'center' }}>
-            <Markdown>
-                {data.readme.replace(
-                    /(# Ref.?7[^\n]*)/m,
-                    '$1`Version: ' + data.version + '`'
-                )}
-            </Markdown>
-            <Markdown>
-                # Authors{'\n'}
-                {data.authors}
-            </Markdown>
+        <View style={styles.container}>
+            <ScrollView style={styles.scroll}>
+                <Markdown style={markdownStyles}>{data.readme}</Markdown>
+
+                <Markdown style={markdownStyles}>{'# Authors\n' + data.authors}</Markdown>
+            </ScrollView>
+            <View>
+                <Text style={styles.version}>Version: {data.version}</Text>
+            </View>
         </View>
     ) : (
         <View

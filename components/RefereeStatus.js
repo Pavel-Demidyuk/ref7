@@ -3,15 +3,24 @@ import React from 'react';
 import { useReferee } from '../db/ref';
 import { timeToString, extractID } from '../helpers';
 
-import { Table, Row } from 'react-native-table-component';
+import { TableWrapper, Row, Cell } from 'react-native-table-component';
 
 export default function RefereeStatus({ id }) {
     let [time] = useReferee(id);
     return (
-        <Row
-            data={[extractID(id), timeToString(time)]}
-            style={{ height: 24, backgroundColor: '#fff' }}
-            textStyle={{ margin: 6 }}
-        />
+        // <Row
+        //     // data={[extractID(id), timeToString(time)]}
+        //     // style={{ height: 24, backgroundColor: '#fff' }}
+        //     // textStyle={{ margin: 6 }}
+        // >
+        <TableWrapper style={{ flexDirection: 'row', backgroundColor: '#fff' }}>
+            <Cell data={extractID(id)} textStyle={{ margin: 2, color: '#000' }} />
+            <Cell
+                data={timeToString(time)}
+                textStyle={{ margin: 0, color: '#444', fontFamily: 'timer' }}
+                style={{ width: '60%' }}
+            />
+        </TableWrapper>
+        // </Row>
     );
 }

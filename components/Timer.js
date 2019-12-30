@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { timeToString } from '../helpers';
 
-export default function Timer({ startTime, running, fixedTime }) {
+export default function Timer({ startTime, running, fixedTime, circleSize }) {
     let [timeStr, setTimeStr] = useState('00:00.000');
 
     const updTime = () =>
@@ -18,7 +18,8 @@ export default function Timer({ startTime, running, fixedTime }) {
         <View>
             <Text
                 style={{
-                    fontSize: wp('12%'),
+                    fontSize: circleSize / 8,
+                    fontFamily: 'timer',
                     color: '#000'
                 }}
             >
