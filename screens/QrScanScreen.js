@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Dimensions, LayoutAnimation, Text, View } from 'react-native';
-import * as firebase from 'firebase';
 import * as Permissions from 'expo-permissions';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import styles from './../styles';
-import { connectTo } from './../db/init';
+import { connectToCompetion } from './../db/init';
+import { Card } from '../components/Card';
 
 export default class QrScan extends Component {
     static navigationOptions = {
@@ -28,25 +28,14 @@ export default class QrScan extends Component {
     };
 
     _handleBarCodeRead = result => {
-        console.log(result);
         LayoutAnimation.spring();
-        connectTo(result.data);
+        connectToCompetion(result.data);
         setAppReady();
     };
 
-    _registerReferee(pin) {
-        firebase
-            .database()
-            .ref('referees/' + pin + '/side')
-            .push(Expo.Constants.deviceId)
-            .then(() => {
-                setAppReady();
-            });
-    }
-
     render() {
         return (
-            <View style={styles.container}>
+            <View style={{ ...styles.container, backgroundColor: 'black' }}>
                 {this.state.hasCameraPermission === null ? (
                     <Text>Waiting for permissions..</Text>
                 ) : this.state.hasCameraPermission === false ? (
@@ -56,12 +45,11 @@ export default class QrScan extends Component {
                 ) : (
                     <BarCodeScanner
                         onBarCodeScanned={result => {
-                            console.log(123123);
                             this._handleBarCodeRead(result);
                         }}
                         style={{
-                            height: Dimensions.get('window').height,
-                            width: Dimensions.get('window').width
+                            height: '100%',
+                            width: '100%'
                         }}
                     />
                 )}

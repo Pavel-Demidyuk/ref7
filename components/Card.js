@@ -6,36 +6,30 @@ import {
 } from 'react-native-responsive-screen';
 // import styles from '../styles';
 
+const circleSize = Math.min(wp('80%'), hp('40%'));
+const btnHeight = Math.min(hp('12%'), 64);
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
+        flexDirection: 'column',
+        height: '100%',
+        justifyContent: 'space-around',
+        alignItems: 'center'
     },
     card: {
-        marginTop: hp('10%'),
-        width: wp('75%'),
-        height: wp('120%'),
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.37,
-        shadowRadius: 6.49,
-        elevation: 8,
+        marginTop: 20,
+        flexGrow: 1,
         borderRadius: 15,
         borderColor: '#E8E8E8',
         backgroundColor: '#fff',
         alignItems: 'center'
     },
     circle: {
-        marginTop: wp('6%'),
-        width: wp('64%'),
-        height: wp('64%'),
-        borderTopLeftRadius: wp('32%'),
-        borderTopRightRadius: wp('32%'),
-        borderBottomLeftRadius: wp('32%'),
-        borderBottomRightRadius: wp('32%'),
+        marginTop: hp('4%'),
+        width: circleSize,
+        height: circleSize,
         borderColor: '#2ECC71',
-        borderWidth: 2,
         backgroundColor: '#fff',
         justifyContent: 'center',
         textAlign: 'center',
@@ -43,45 +37,60 @@ const styles = StyleSheet.create({
     },
     blockButtonOutline: {
         width: wp('75%'),
-        height: wp('12%'),
-        backgroundColor: '#fff',
+        height: btnHeight,
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        borderRadius: 5,
-        borderWidth: 2,
-        shadowOffset: { width: 3, height: 3 },
-        shadowOpacity: 0.62,
-        shadowRadius: 2.22,
-        elevation: 5
+        borderWidth: 0
     },
     buttonPos: {
-        marginTop: wp('6%'),
+        marginTop: 10,
+        marginBottom: 10,
+        height: btnHeight,
         justifyContent: 'center',
         alignItems: 'center'
     }
 });
 
-function Card({ circle, text, button, onPress, color = '#2DCB73' }) {
+function Card({
+    circle,
+    text,
+    button,
+    onPress,
+    color = '#2DCB73',
+    id,
+    btnRound = btnHeight / 2,
+    needCircleBorder = true
+}) {
     return (
         <View style={styles.container}>
             <View style={styles.card}>
-                <View style={{ ...styles.circle, borderColor: color }}>{circle()}</View>
-                <View style={{ marginTop: wp('20%') }}>{text()}</View>
+                <View
+                    style={{
+                        ...styles.circle,
+                        borderColor: color,
+                        borderRadius: circleSize / 2,
+                        borderWidth: needCircleBorder ? 2 : 0
+                    }}
+                >
+                    {circle(circleSize)}
+                </View>
+                <View style={{ marginTop: 32 }}>{text()}</View>
             </View>
+            {id ? <View style={{ marginTop: 8 }}>{id()}</View> : null}
             <View style={styles.buttonPos}>
                 <TouchableOpacity
                     style={{
                         ...styles.blockButtonOutline,
-                        borderColor: color,
-                        shadowColor: color
+                        backgroundColor: color,
+                        borderRadius: btnRound
                     }}
                     onPress={onPress}
                 >
                     <Text
                         style={{
                             fontSize: wp('5%'),
-                            color
+                            color: '#fff'
                         }}
                     >
                         {button}
