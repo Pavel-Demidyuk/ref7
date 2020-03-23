@@ -1,3 +1,4 @@
+import random_name from 'node-random-name';
 import Constants from 'expo-constants';
 import { useEffect, useState } from 'react';
 
@@ -8,9 +9,11 @@ import { useEffect, useState } from 'react';
 function createReferee(ref, isMain) {
     ref.child('ref/' + Constants.deviceId.substr(0, 16)).set({
         id: Constants.deviceId,
+        name: random_name({ seed: Constants.deviceId, first: true }),
         delta: 0,
         running: false,
-        main: isMain
+        main: isMain,
+        session: 1
     });
 }
 

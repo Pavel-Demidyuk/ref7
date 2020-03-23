@@ -5,13 +5,14 @@ import { useRefs } from '../db/ref';
 import Constants from 'expo-constants';
 import { extractID } from '../helpers';
 import { Table, Row } from 'react-native-table-component';
+import random_name from 'node-random-name';
 
 export default function ReferessConnected({
     showMe = true,
     text = 'Referees connected:'
 }) {
     let [refs] = useRefs();
-    let id = extractID(Constants.deviceId);
+    let id = random_name({ random: 0 });
     return (
         <View>
             <Text>{text}</Text>
