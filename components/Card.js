@@ -4,6 +4,9 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp
 } from 'react-native-responsive-screen';
+import { LinearGradient } from 'expo-linear-gradient';
+import {RFPercentage} from "react-native-responsive-fontsize";
+
 // import styles from '../styles';
 
 const circleSize = Math.min(wp('80%'), hp('40%'));
@@ -11,90 +14,121 @@ const btnHeight = Math.min(hp('12%'), 64);
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        height: hp('100%'),
         flexDirection: 'column',
-        height: '100%',
-        justifyContent: 'space-around',
-        alignItems: 'center'
-    },
-    card: {
-        marginTop: 20,
-        flexGrow: 1,
-        borderRadius: 15,
-        borderColor: '#E8E8E8',
-        backgroundColor: '#fff',
-        alignItems: 'center'
-    },
-    circle: {
-        marginTop: hp('4%'),
-        width: circleSize,
-        height: circleSize,
-        borderColor: '#2ECC71',
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        textAlign: 'center',
-        alignItems: 'center'
-    },
-    blockButtonOutline: {
-        width: wp('75%'),
-        height: btnHeight,
-        justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center',
-        borderWidth: 0
     },
-    buttonPos: {
-        marginTop: 10,
-        marginBottom: 10,
-        height: btnHeight,
+
+    circle: {
+        marginTop: hp('10%'),
+        width: wp('75%'),
+        height: wp('75%'),
+        backgroundColor: '#fff',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        shadowOpacity: 0.16,
+        shadowRadius: 100,
+        elevation: 10,
+        alignItems: 'center',
         justifyContent: 'center',
-        alignItems: 'center'
+    },
+
+    infoCard: {
+        marginTop: hp('4%'),
+        width: wp('75%'),
+        height: hp('35%'),
+        alignItems: 'center',
+        backgroundColor: "#fff",
+        borderRadius: 39,
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        shadowOpacity: 0.16,
+        shadowRadius: 100,
+        elevation: 10,
+    },
+
+    actionButton : {
+        marginTop: hp('0.5%'),
+        width: wp('65%'),
+        height: hp('8%'),
+    },
+
+    gradient: {
+        width: wp('65%'),
+        height: hp('8%'),
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: '#00FF88',
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        shadowOpacity: 0.72,
+        shadowRadius: 1,
+        elevation: 10
     }
 });
 
 function Card({
+    background="#EEFFF5",
     circle,
     text,
     button,
     onPress,
-    color = '#2DCB73',
+    colors=['#00FA87', '#00F4BB'],
     id,
     btnRound = btnHeight / 2,
-    needCircleBorder = true
+    needCircleBorder = false
 }) {
     return (
-        <View style={styles.container}>
-            <View style={styles.card}>
-                <View
-                    style={{
-                        ...styles.circle,
-                        borderColor: color,
-                        borderRadius: circleSize / 2,
-                        borderWidth: needCircleBorder ? 2 : 0
-                    }}
-                >
+        <View
+            style={{
+                ...styles.container,
+                backgroundColor: background,
+            }}
+        >
+            <View
+                 style={{
+                     ...styles.circle,
+                     borderRadius: circleSize / 2,
+                     borderWidth: needCircleBorder ? 2 : 0
+                 }}
+            >
                     {circle(circleSize)}
-                </View>
-                <View style={{ marginTop: 32 }}>{text()}</View>
             </View>
-            {id ? <View style={{ marginTop: 8 }}>{id()}</View> : null}
-            <View style={styles.buttonPos}>
+            <View style={{...styles.infoCard}}>
+                <View style={{overflow: 'hidden'}}>
+                    {id ? <View style={{ marginTop: 8 }}>{id()}</View> : null}
+                    {text()}
+                    <View style={{ marginTop: hp('4%') }}>
+                    </View>
+                </View>
                 <TouchableOpacity
-                    style={{
-                        ...styles.blockButtonOutline,
-                        backgroundColor: color,
-                        borderRadius: btnRound
-                    }}
+                    style={styles.actionButton}
                     onPress={onPress}
                 >
-                    <Text
+                    <LinearGradient
+                        colors={colors}
                         style={{
-                            fontSize: wp('5%'),
-                            color: '#fff'
+                            ...styles.gradient,
+                            borderRadius: btnRound,
                         }}
                     >
-                        {button}
-                    </Text>
+                        <Text
+                            style={{
+                                fontSize: RFPercentage(2.8),
+                                fontWeight: 'bold',
+                                color: '#fff'
+                            }}
+                        >
+                            {button}
+                        </Text>
+                    </LinearGradient>
                 </TouchableOpacity>
             </View>
         </View>

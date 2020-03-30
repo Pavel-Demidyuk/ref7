@@ -11,6 +11,7 @@ export default function TimerScreen() {
     const [running, toggle, startTime, fixedTime] = useTimer();
     return (
         <Card
+            background={running ? '#FFF1F8' : '#EEFFF5'}
             circle={circleSize => (
                 <Timer
                     running={running}
@@ -21,15 +22,15 @@ export default function TimerScreen() {
             )}
             text={() => (
                 <View>
-                    <ReferessConnected showMe={false} text="Other referees:" />
+                    <ReferessConnected showMe={false}/>
                 </View>
             )}
-            button={running ? 'Stop' : 'Start'}
+            button={running ? 'STOP' : 'START'}
             onPress={() => toggle()}
-            color={running ? '#ff0000' : '#2ECC71'}
-            btnRound={10}
+            colors={running ? ['#FF004C', '#FF007A'] : ['#00FA87', '#00F4BB']}
+            btnRound={39}
             id={() => (
-                <Text style={{ color: 'gray', textAlign: 'center' }}>
+                <Text style={{ color: '#000', textAlign: 'center' }}>
                     Your ID: {extractID(Constants.deviceId)}{' '}
                 </Text>
             )}
