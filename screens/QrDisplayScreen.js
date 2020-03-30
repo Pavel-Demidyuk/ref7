@@ -7,8 +7,7 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp
 } from 'react-native-responsive-screen';
-import {RFPercentage} from "react-native-responsive-fontsize";
-
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 export default function QrScreen() {
     return (
@@ -23,13 +22,9 @@ export default function QrScreen() {
                         fgColor="white"
                     />
                 )}
-                id={() => (
-                    <Text style={{fontSize: RFPercentage(2.5 )}}>
-                        ID: {pin}{' '}
-                    </Text>
-                )}
+                id={() => <Text style={{ fontSize: RFPercentage(2.5) }}>ID: {pin} </Text>}
                 text={() => (
-                    <View style={{marginTop: hp('4%')}}>
+                    <View style={{ marginTop: hp('4%') }}>
                         <RefereesConnected />
                     </View>
                 )}

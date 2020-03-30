@@ -5,7 +5,7 @@ import {
     heightPercentageToDP as hp
 } from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
-import {RFPercentage} from "react-native-responsive-fontsize";
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 // import styles from '../styles';
 
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     container: {
         height: hp('100%'),
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'center'
     },
 
     circle: {
@@ -24,16 +24,16 @@ const styles = StyleSheet.create({
         width: wp('75%'),
         height: wp('75%'),
         backgroundColor: '#fff',
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
-            height: 0,
+            height: 0
         },
         shadowOpacity: 0.16,
         shadowRadius: 100,
         elevation: 10,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
 
     infoCard: {
@@ -41,21 +41,21 @@ const styles = StyleSheet.create({
         width: wp('75%'),
         height: hp('35%'),
         alignItems: 'center',
-        backgroundColor: "#fff",
+        backgroundColor: '#fff',
         borderRadius: 39,
         shadowOffset: {
             width: 0,
-            height: 0,
+            height: 0
         },
         shadowOpacity: 0.16,
         shadowRadius: 100,
-        elevation: 10,
+        elevation: 10
     },
 
-    actionButton : {
+    actionButton: {
         marginTop: hp('0.5%'),
         width: wp('65%'),
-        height: hp('8%'),
+        height: hp('8%')
     },
 
     gradient: {
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         shadowColor: '#00FF88',
         shadowOffset: {
             width: 0,
-            height: 0,
+            height: 0
         },
         shadowOpacity: 0.72,
         shadowRadius: 1,
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
 });
 
 function Card({
-    background="#EEFFF5",
+    background = '#EEFFF5',
     circle,
     text,
     button,
     onPress,
-    colors=['#00FA87', '#00F4BB'],
+    colors = ['#00FA87', '#00F4BB'],
     id,
     btnRound = btnHeight / 2,
     needCircleBorder = false
@@ -89,34 +89,30 @@ function Card({
         <View
             style={{
                 ...styles.container,
-                backgroundColor: background,
+                backgroundColor: background
             }}
         >
             <View
-                 style={{
-                     ...styles.circle,
-                     borderRadius: circleSize / 2,
-                     borderWidth: needCircleBorder ? 2 : 0
-                 }}
+                style={{
+                    ...styles.circle,
+                    borderRadius: circleSize / 2,
+                    borderWidth: needCircleBorder ? 2 : 0
+                }}
             >
-                    {circle(circleSize)}
+                {circle(circleSize)}
             </View>
-            <View style={{...styles.infoCard}}>
-                <View style={{overflow: 'hidden'}}>
+            <View style={{ ...styles.infoCard }}>
+                <View style={{ overflow: 'hidden' }}>
                     {id ? <View style={{ marginTop: 8 }}>{id()}</View> : null}
                     {text()}
-                    <View style={{ marginTop: hp('4%') }}>
-                    </View>
+                    <View style={{ marginTop: hp('4%') }}></View>
                 </View>
-                <TouchableOpacity
-                    style={styles.actionButton}
-                    onPress={onPress}
-                >
+                <TouchableOpacity style={styles.actionButton} onPress={onPress}>
                     <LinearGradient
                         colors={colors}
                         style={{
                             ...styles.gradient,
-                            borderRadius: btnRound,
+                            borderRadius: btnRound
                         }}
                     >
                         <Text

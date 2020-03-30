@@ -5,8 +5,7 @@ import {
     heightPercentageToDP as hp
 } from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
-import {RFPercentage} from "react-native-responsive-fontsize";
-
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 const btnHeight = Math.min(hp('12%'), 64);
 
@@ -14,7 +13,7 @@ const styles = StyleSheet.create({
     container: {
         height: hp('100%'),
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'center'
     },
 
     topCard: {
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 39,
         shadowOffset: {
             width: 0,
-            height: 0,
+            height: 0
         },
         shadowOpacity: 0.16,
         shadowRadius: 100,
@@ -37,20 +36,19 @@ const styles = StyleSheet.create({
 
     infoContainer: {
         marginTop: hp('7%'),
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
 
     textInfo: {
-       marginTop: hp('1%'),
-       alignItems: 'center',
-       color: '#000',
+        marginTop: hp('1%'),
+        alignItems: 'center',
+        color: '#000'
     },
 
-    actionButton : {
+    actionButton: {
         marginTop: hp('5%'),
         width: wp('70%'),
-        height: hp('8%'),
-
+        height: hp('8%')
     },
 
     gradient: {
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
         shadowColor: '#00FF88',
         shadowOffset: {
             width: 0,
-            height: 0,
+            height: 0
         },
         shadowOpacity: 0.72,
         shadowRadius: 1,
@@ -69,42 +67,36 @@ const styles = StyleSheet.create({
     }
 });
 
-function TopCard ({
-    background="#EEFFF5",
+function TopCard({
+    background = '#EEFFF5',
     text,
     infoContainer,
     button,
     onPress,
     id,
-    btnRound = btnHeight / 2,
+    btnRound = btnHeight / 2
 }) {
     return (
         <View
             style={{
                 ...styles.container,
-                backgroundColor: background,
+                backgroundColor: background
             }}
         >
             <View style={styles.topCard}>
-                <View style={styles.infoContainer}>
-                    {infoContainer()}
-                </View>
+                <View style={styles.infoContainer}>{infoContainer()}</View>
                 <View style={styles.textInfo}>
                     {id ? <View style={{ marginTop: hp('1%') }}>{id()}</View> : null}
                     {text()}
-                    <View style={{ marginTop: hp('4%') }}>
-                    </View>
+                    <View style={{ marginTop: hp('4%') }}></View>
                 </View>
             </View>
-            <TouchableOpacity
-                style={styles.actionButton}
-                onPress={onPress}
-            >
+            <TouchableOpacity style={styles.actionButton} onPress={onPress}>
                 <LinearGradient
                     colors={['#00FA87', '#00F4BB']}
                     style={{
                         ...styles.gradient,
-                        borderRadius: btnRound,
+                        borderRadius: btnRound
                     }}
                 >
                     <Text

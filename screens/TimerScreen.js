@@ -22,7 +22,7 @@ export default function TimerScreen() {
             )}
             text={() => (
                 <View>
-                    <ReferessConnected showMe={false}/>
+                    <ReferessConnected showMe={false} />
                 </View>
             )}
             button={running ? 'STOP' : 'START'}

@@ -3,11 +3,13 @@ import { View, Text } from 'react-native';
 import { TopCard } from './../components/TopCard';
 import { useAvgTime } from '../db/timer';
 import { timeToString } from '../helpers';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp
+} from 'react-native-responsive-screen';
 import { addResults, useResults } from '../db/results';
 import { Table, TableWrapper, Cell } from 'react-native-table-component';
-import {RFPercentage} from "react-native-responsive-fontsize";
-
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 export default function ResultsScreen() {
     const [time] = useAvgTime();
@@ -18,12 +20,12 @@ export default function ResultsScreen() {
             infoContainer={() => (
                 <View
                     style={{
-                         width: wp('71%'),
-                         height: wp('71%'),
-                         borderRadius: wp('71%') / 2,
-                         backgroundColor: '#E7E7E7',
-                         alignItems: 'center',
-                         justifyContent: 'center',
+                        width: wp('71%'),
+                        height: wp('71%'),
+                        borderRadius: wp('71%') / 2,
+                        backgroundColor: '#E7E7E7',
+                        alignItems: 'center',
+                        justifyContent: 'center'
                     }}
                 >
                     <View
@@ -37,19 +39,19 @@ export default function ResultsScreen() {
                             shadowColor: '#000',
                             shadowOffset: {
                                 width: 0,
-                                height: 0,
+                                height: 0
                             },
                             shadowOpacity: 0.16,
                             shadowRadius: 1,
                             elevation: 10
                         }}
                     >
-                        <Text style={{color: '#18D166'}}>ВРЕМЯ ГЛАВНОГО СУДЬИ</Text>
+                        <Text style={{ color: '#18D166' }}>ВРЕМЯ ГЛАВНОГО СУДЬИ</Text>
                     </View>
                 </View>
             )}
             text={() => (
-                <View style={{height: hp('16.8%'), overflow: 'scroll'}}>
+                <View style={{ height: hp('16.8%'), overflow: 'scroll' }}>
                     <Table
                         borderStyle={{
                             borderWidth: 0
@@ -67,11 +69,17 @@ export default function ResultsScreen() {
                             >
                                 <Cell
                                     data={i + 1}
-                                    textStyle={{ color: '#000', fontSize: RFPercentage(2.7) }}
+                                    textStyle={{
+                                        color: '#000',
+                                        fontSize: RFPercentage(2.7)
+                                    }}
                                 />
                                 <Cell
                                     data={timeToString(e.time)}
-                                    textStyle={{ color: '#18D166', fontSize: RFPercentage(2.7) }}
+                                    textStyle={{
+                                        color: '#18D166',
+                                        fontSize: RFPercentage(2.7)
+                                    }}
                                 />
                             </TableWrapper>
                         ))}
