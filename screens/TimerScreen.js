@@ -33,7 +33,7 @@ export default function TimerScreen() {
             btnRound={10}
             id={() => (
                 <Text style={{ color: 'gray', textAlign: 'center' }}>
-                    Your name: {random_name({ seed: Constants.deviceId, first: true })}{' '}
+                    Your name: {random_name({ seed:extractID(Constants.deviceId), first: true })}{' '}
                 </Text>
             )}
         />

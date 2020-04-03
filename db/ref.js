@@ -1,7 +1,8 @@
 import random_name from 'node-random-name';
 import Constants from 'expo-constants';
 import { useEffect, useState } from 'react';
-
+import * as firebase from 'firebase';
+import { extractID } from '../helpers';
 /**
  * Connect ref
  * @param {firebase.database.Reference} ref ref of competition
@@ -9,7 +10,7 @@ import { useEffect, useState } from 'react';
 function createReferee(ref, isMain) {
     ref.child('ref/' + Constants.deviceId.substr(0, 16)).set({
         id: Constants.deviceId,
-        name: random_name({ seed: Constants.deviceId, first: true }),
+        name: random_name({ seed: extractID(Constants.deviceId), first: true }),
         delta: 0,
         running: false,
         main: isMain,
@@ -71,4 +72,13 @@ function useReferee(id) {
     return [time];
 }
 
-export { createReferee, useRefs, useReferee };
+function getName(id) {
+  let name;
+     global.connection.child( 'ref/' + id).once('value', snapshot => {
+    name = snapshot.val().name
+  })
+    return name
+
+}
+
+export { createReferee, useRefs, useReferee, getName };
