@@ -7,10 +7,11 @@ import Constants from 'expo-constants';
 import { extractID } from '../helpers';
 import { Text, View } from 'react-native';
 import random_name from 'node-random-name';
+import { useName } from '../db/ref';
 
 export default function TimerScreen() {
     const [session, setSession] = useState(0);
-
+    const name = useName(extractID(Constants.deviceId))
     const [running, toggle, startTime, fixedTime] = useTimer();
     return (
         <Card
@@ -33,7 +34,8 @@ export default function TimerScreen() {
             btnRound={10}
             id={() => (
                 <Text style={{ color: 'gray', textAlign: 'center' }}>
-                    Your name: {random_name({ seed:extractID(Constants.deviceId), first: true })}{' '}
+                    Your name:{' '}
+                    {random_name({ seed: extractID(Constants.deviceId), first: true })}{' '}
                 </Text>
             )}
         />
