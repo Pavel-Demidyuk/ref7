@@ -6,6 +6,7 @@ import TimerScreen from '../screens/TimerScreen';
 import ResultsScreen from '../screens/ResultsScreen';
 import TestScreen from '../screens/TestScreen';
 import icons from '../icons';
+import {colorNames} from "react-native-svg/lib/extract/extractColor";
 
 const TimerStack = createStackNavigator({
     Timer: TimerScreen
@@ -15,7 +16,11 @@ TimerStack.navigationOptions = {
     header: null,
     headerMode: 'none',
     tabBarLabel: 'Timer',
-    tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={icons.timer} />
+    tabBarOptions: {
+        activeTintColor: '#000',
+        showLabel: true,
+    },
+    tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={icons.timer}/>
 };
 
 const ResultsStack = createStackNavigator({
@@ -26,6 +31,10 @@ ResultsStack.navigationOptions = {
     header: null,
     headerMode: 'none',
     tabBarLabel: 'Results',
+    tabBarOptions: {
+        activeTintColor: '#000',
+        showLabel: true
+    },
     tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={icons.podium} />
 };
 
@@ -35,6 +44,10 @@ const TestStack = createStackNavigator({
 
 TestStack.navigationOptions = {
     tabBarLabel: 'Test',
+    tabBarOptions: {
+        activeTintColor: '#000',
+        showLabel: true,
+    },
     tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={icons.test} />
 };
 
