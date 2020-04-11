@@ -1,36 +1,36 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
-import { Card } from '../components/Card';
+import { TopCard } from '../components/TopCard';
 import RefereesConnected from '../components/RefereesConnected';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp
+} from 'react-native-responsive-screen';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 export default function QrScreen() {
     return (
         <View>
-            <Card
-                circle={circleSize => (
+            <TopCard
+                displayState={'none'}
+                infoContainer={() => (
                     <QRCode
                         value={pin}
-                        size={circleSize - 36}
+                        size={wp('56%')}
                         bgColor="black"
                         fgColor="white"
                     />
                 )}
+                id={() => <Text style={{ fontSize: RFPercentage(2.5) }}>ID: {pin} </Text>}
                 text={() => (
-                    <View>
+                    <View style={{ marginTop: hp('4%') }}>
                         <RefereesConnected />
                     </View>
                 )}
-                button="Start Tournament"
+                button="START TOURNAMENT"
                 onPress={() => setAppReady()}
                 color="#000"
-                needCircleBorder={false}
-                id={() => (
-                    <Text style={{ color: 'gray', textAlign: 'center', marginTop: 16 }}>
-                        ID: {pin}{' '}
-                    </Text>
-                )}
             />
         </View>
     );
