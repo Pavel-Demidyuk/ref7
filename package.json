@@ -26,6 +26,7 @@
     "expo-linear-gradient": "^6.0.0",
     "expo-web-browser": "6.0.0",
     "firebase": "^6.6.1",
+    "node-random-name": "^1.0.1",
     "random-string": "^0.2.0",
     "react": "16.8.3",
     "react-dom": "^16.8.6",

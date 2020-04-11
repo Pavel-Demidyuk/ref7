@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Timer from '../components/Timer.js';
 import { Card } from '../components/Card';
 import ReferessConnected from '../components/RefereesConnected';
@@ -6,8 +6,12 @@ import { useTimer } from './../db/timer';
 import Constants from 'expo-constants';
 import { extractID } from '../helpers';
 import { Text, View } from 'react-native';
+import random_name from 'node-random-name';
+import { useName } from '../db/ref';
 
 export default function TimerScreen() {
+    const [session, setSession] = useState(0);
+    const name = useName(extractID(Constants.deviceId))
     const [running, toggle, startTime, fixedTime] = useTimer();
     return (
         <Card
@@ -31,7 +35,9 @@ export default function TimerScreen() {
             btnRound={39}
             id={() => (
                 <Text style={{ color: '#000', textAlign: 'center' }}>
-                    Your ID: {extractID(Constants.deviceId)}{' '}
+                    Your name:{' '}
+                    {random_name({ seed: extractID(Constants.deviceId), first: true })}{' '}
+
                 </Text>
             )}
         />

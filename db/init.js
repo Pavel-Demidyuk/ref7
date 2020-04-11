@@ -12,7 +12,6 @@ let db = firebase.database(db);
  */
 function connectToCompetion(pin, isMain = false) {
     console.log('connecting to', pin);
-
     const ref = db.ref('competions/' + pin);
 
     if (isMain) ref.set({});
