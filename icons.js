@@ -2,21 +2,21 @@ import { Platform } from 'react-native'
 
 const iosIcons = {
   qrScan: 'ios-qr-scanner',
-  add: 'ios-add', 
+  add: 'ios-add-circle-outline',
   info: 'ios-information-circle', 
-  timer: 'ios-stopwatch', 
-  podium: 'ios-podium', 
+  timer: 'ios-timer',
+  podium: 'ios-stats',
   test: 'ios-bug'
-}
+};
 
 const androidIcons = {
   qrScan: 'md-qr-scanner',
-  add: 'md-add', 
+  add: 'md-add-circle-outline',
   info: 'md-information-circle-outline', 
-  timer: 'md-stopwatch', 
-  podium: 'md-podium', 
+  timer: 'md-timer',
+  podium: 'md-stats',
   test: 'md-bug'
-}
+};
 
-const icons = Platform.OS === 'ios' ? iosIcons : androidIcons
+const icons = Platform.OS === 'ios' ? iosIcons : androidIcons;
 export default icons;

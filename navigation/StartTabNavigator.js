@@ -12,8 +12,12 @@ const QrScanStack = createStackNavigator({
 });
 
 QrScanStack.navigationOptions = {
-    tabBarLabel: 'Scan QR code',
-    tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Icons.qrScan} />
+    tabBarLabel: 'Scan QR',
+    tabBarOptions: {
+        activeTintColor: '#000',
+        showLabel: true
+    },
+    tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Icons.qrScan}/>
 };
 
 const QrDisplayStack = createStackNavigator({
@@ -21,8 +25,12 @@ const QrDisplayStack = createStackNavigator({
 });
 
 QrDisplayStack.navigationOptions = {
-    tabBarLabel: 'Generate QR code',
-    tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Icons.add} />
+    tabBarLabel: 'Generate QR',
+    tabBarOptions: {
+        activeTintColor: '#000',
+        showLabel: true,
+    },
+    tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Icons.add}/>
 };
 
 const InfoStack = createStackNavigator({
@@ -30,8 +38,12 @@ const InfoStack = createStackNavigator({
 });
 
 InfoStack.navigationOptions = {
-    tabBarLabel: 'Information',
-    tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Icons.info} />
+    tabBarLabel: 'Info',
+    tabBarOptions: {
+        activeTintColor: '#000',
+        showLabel: true,
+    },
+    tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Icons.info}/>
 };
 
 export default createBottomTabNavigator({

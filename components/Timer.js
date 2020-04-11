@@ -20,7 +20,7 @@ export default function Timer({ startTime, running, fixedTime, circleSize }) {
                 style={{
                     fontSize: circleSize / 8,
                     fontFamily: 'timer',
-                    color: '#000'
+                    color: running ? '#D53B31' : '#18D166'
                 }}
             >
                 {timeStr}

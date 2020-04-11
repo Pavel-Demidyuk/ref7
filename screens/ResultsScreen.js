@@ -1,65 +1,69 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Card } from './../components/Card';
+import { TopCard } from './../components/TopCard';
 import { useAvgTime } from '../db/timer';
 import { timeToString } from '../helpers';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { addResults, useResults } from '../db/results';
+import {
+    heightPercentageToDP as hp
+} from 'react-native-responsive-screen';
 import { Table, TableWrapper, Cell } from 'react-native-table-component';
+import { RFPercentage } from 'react-native-responsive-fontsize';
+import ResultsStyle from "../styles/ResultsStyle";
 
 export default function ResultsScreen() {
     const [time] = useAvgTime();
     const [results] = useResults();
 
     return (
-        <Card
-            circle={circleSize => (
-                <Text
-                    style={{
-                        fontSize: circleSize / 8,
-                        fontFamily: 'timer',
-                        color: '#000'
-                    }}
+        <TopCard
+            infoContainer={() => (
+                <View
+                    style={ResultsStyle.styles.bigCircle}
                 >
-                    {timeToString(time)}
-                </Text>
+                    <View
+                        style={ResultsStyle.styles.smallCircle}
+                    >
+                        <Text style={{ color: '#18D166' }}>ВРЕМЯ ГЛАВНОГО СУДЬИ</Text>
+                    </View>
+                </View>
             )}
             text={() => (
-                <View>
+                <View style={ResultsStyle.styles.tableContainer}>
                     <Table
                         borderStyle={{
                             borderWidth: 0
                         }}
-                        style={{ width: 160 }}
                     >
                         {results.map((e, i) => (
                             <TableWrapper
-                                style={{ flexDirection: 'row', backgroundColor: '#fff' }}
+                                style={ResultsStyle.styles.table}
                                 key={i}
                             >
                                 <Cell
                                     data={i + 1}
-                                    textStyle={{ margin: 0, color: '#000' }}
+                                    textStyle={{
+                                        color: '#000',
+                                        fontSize: RFPercentage(2.7)
+                                    }}
                                 />
                                 <Cell
                                     data={timeToString(e.time)}
                                     textStyle={{
-                                        margin: 0,
-                                        color: '#444',
-                                        fontFamily: 'timer'
+                                        color: '#18D166',
+                                        fontSize: RFPercentage(2.7)
                                     }}
-                                    style={{ width: 100 }}
                                 />
                             </TableWrapper>
                         ))}
                     </Table>
                 </View>
             )}
-            button="Save Result"
-            btnRound={10}
+            button="SAVE RESULT"
+            btnRound={39}
             onPress={() => addResults(time, +new Date())}
             id={() => (
-                <Text style={{ color: 'gray', textAlign: 'center', marginTop: 16 }}>
+                <Text style={{ color: '#000', textAlign: 'center' }}>
                     Competition ID: {pin}{' '}
                 </Text>
             )}

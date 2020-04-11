@@ -82,7 +82,7 @@ async function loadResourcesAsync() {
             require('./AUTHORS.md')
         ]),
         Font.loadAsync({
-            'timer': require('./assets/fonts/MajorMonoDisplay-Regular.ttf'),
+            'timer': require('./assets/fonts/RobotoMono-Regular.ttf'),
             ...Ionicons.font
         })
     ]);
